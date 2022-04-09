@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- TODO :  Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorControlHighlight">@color/textSecondary</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <!--  TODO : MaterialTheme  -->
+    <style name="MaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorControlHighlight">@color/textSecondary</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <!--  TODO : appbar  -->
+    <style name="appBarStyleBoldText" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:fontFamily">@font/font_bold</item>
+    </style>
+
+    <!--  TODO : bottom Bar  -->
+    <style name="bottomBarStyle">
+        <item name="android:fontFamily">@font/font_bold</item>
+    </style>
+
+</resources>

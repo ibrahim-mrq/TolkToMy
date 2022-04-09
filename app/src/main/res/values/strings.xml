@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">TolkToMy</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="please_wait">please wait</string>
+
+    <string name="empty_data">No data, please try again</string>
+    <string name="empty_field">This field cannot be left blank</string>
+    <string name="invalid_email">Please enter a valid email</string>
+    <string name="connection_error">Server connection error</string>
+    <string name="permissionsError">Logged in from another place!</string>
+    <string name="error_login">Incorrect email or password</string>
+    <string name="error_register">Verify that all entries are correct</string>
+    <string name="email_not_exist">Email not exist</string>
+    <string name="invalid_phone">Invalid phone number</string>
+    <string name="invalid_code">Invalid code number</string>
+    <string name="password_not_match">Password does not match</string>
+    <string name="back_exit">Press back again to exit.</string>
+    <string name="invalid_pin_code">The PIN code must consist of 6 digits</string>
+
 </resources>

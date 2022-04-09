@@ -1,8 +1,10 @@
-package com.tolk_to_my;
+package com.tolk_to_my.controller.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.tolk_to_my.R;
 
 public class MainActivity extends AppCompatActivity {
 
