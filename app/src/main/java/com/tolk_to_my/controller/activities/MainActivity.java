@@ -1,20 +1,24 @@
 package com.tolk_to_my.controller.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.tolk_to_my.R;
+import com.tolk_to_my.databinding.ActivityMainBinding;
+import com.tolk_to_my.helpers.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initView();
+    }
 
-
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+    private void initView() {
+        binding.appbar.tvTool.setText(getString(R.string.app_name));
     }
 }

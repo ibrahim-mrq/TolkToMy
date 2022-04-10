@@ -19,5 +19,19 @@
     <string name="password_not_match">Password does not match</string>
     <string name="back_exit">Press back again to exit.</string>
     <string name="invalid_pin_code">The PIN code must consist of 6 digits</string>
+    <string name="login_as">تسجيل دخول ك</string>
+    <string name="vendors">مقدم الخدمة</string>
+    <string name="customer">المستفيد</string>
+    <string name="id">رقم الهوية</string>
+    <string name="password">كلمة المرور</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="dont_have_account">لا تملك حساب، </string>
+    <string name="register_now">سجل الان</string>
+    <string name="register">تسجيل جديد</string>
+    <string name="name">الاسم</string>
+    <string name="specialize">التخصص</string>
+    <string name="phone">رقم الجوال</string>
+    <string name="email">الايميل</string>
+    <string name="re_password">تاكيد كلمة المرور</string>
 
 </resources>
