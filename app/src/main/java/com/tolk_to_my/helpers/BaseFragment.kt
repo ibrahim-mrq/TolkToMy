@@ -16,10 +16,6 @@ import com.tolk_to_my.R
 
 open class BaseFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     var dialog: Dialog? = null
 
     open fun showCustomProgress(onCancelListener: DialogInterface.OnCancelListener?) {

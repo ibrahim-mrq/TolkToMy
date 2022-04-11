@@ -1,37 +1,38 @@
 <resources>
-    <string name="app_name">TolkToMy</string>
+    <!--    <string name="app_name">Talk To Me</string>-->
+    <string name="app_name">تحدث معي</string>
 
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
 
-    <string name="please_wait">please wait</string>
+    <string name="please_wait">ارجوا انتظر</string>
 
-    <string name="empty_data">No data, please try again</string>
-    <string name="empty_field">This field cannot be left blank</string>
-    <string name="invalid_email">Please enter a valid email</string>
-    <string name="connection_error">Server connection error</string>
-    <string name="permissionsError">Logged in from another place!</string>
-    <string name="error_login">Incorrect email or password</string>
-    <string name="error_register">Verify that all entries are correct</string>
-    <string name="email_not_exist">Email not exist</string>
-    <string name="invalid_phone">Invalid phone number</string>
-    <string name="invalid_code">Invalid code number</string>
-    <string name="password_not_match">Password does not match</string>
-    <string name="back_exit">Press back again to exit.</string>
-    <string name="invalid_pin_code">The PIN code must consist of 6 digits</string>
+    <string name="empty_data">لا توجد بيانات ، يرجى المحاولة مرة أخرى</string>
+    <string name="empty_field">لا يمكن ترك هذا الحقل فارغا</string>
+    <string name="invalid_email">يرجى إدخال البريد الإلكتروني الصحيح</string>
+    <string name="password_not_match">كلمة المرور غير متطابقة</string>
+    <string name="back_exit">اضغط مرة أخرى للخروج.</string>
+
     <string name="login_as">تسجيل دخول ك</string>
-    <string name="vendors">مقدم الخدمة</string>
-    <string name="customer">المستفيد</string>
-    <string name="id">رقم الهوية</string>
-    <string name="password">كلمة المرور</string>
     <string name="login">تسجيل دخول</string>
     <string name="dont_have_account">لا تملك حساب، </string>
     <string name="register_now">سجل الان</string>
     <string name="register">تسجيل جديد</string>
+    <string name="type">النوع</string>
+
+    <string name="vendor">مقدم الخدمة</string>
+    <string name="customer">المستفيد</string>
+
+    <string name="id">رقم الهوية</string>
+    <string name="password">كلمة المرور</string>
     <string name="name">الاسم</string>
     <string name="specialize">التخصص</string>
     <string name="phone">رقم الجوال</string>
     <string name="email">الايميل</string>
     <string name="re_password">تاكيد كلمة المرور</string>
+
+    <string name="profile">الملف الشخصي</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="setting">الاعدادات</string>
 
 </resources>

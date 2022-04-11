@@ -26,7 +26,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="60dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo"
+                android:src="@drawable/ic_launcher_background"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -69,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_regular"
-                        android:text="@string/vendors"
+                        android:text="@string/vendor"
                         android:textSize="14sp"
                         android:textColor="@color/white" />
 

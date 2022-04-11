@@ -1,5 +1,6 @@
 package com.tolk_to_my.helpers
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -10,6 +11,7 @@ import android.util.Patterns
 import android.view.Gravity
 import android.view.View
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -19,32 +21,6 @@ import com.tolk_to_my.R
 import com.tapadoo.alerter.Alerter
 
 open class BaseActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        LocaleHelper.setLocale(
-            applicationContext,
-            Hawk.get(Constants.TYPE_LANGUAGE, Constants.TYPE_LANGUAGE_EN)
-        )
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        LocaleHelper.setLocale(this, Hawk.get(Constants.TYPE_LANGUAGE, Constants.TYPE_LANGUAGE_EN))
-    }
-
-    override fun onResume() {
-        super.onResume()
-        LocaleHelper.setLocale(
-            applicationContext,
-            Hawk.get(Constants.TYPE_LANGUAGE, Constants.TYPE_LANGUAGE_EN)
-        )
-    }
-
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
-    }
-
 
     private var dialog: Dialog? = null
 
@@ -205,6 +181,26 @@ open class BaseActivity : AppCompatActivity() {
 
     fun getText(editText: TextInputEditText): String {
         return editText.text.toString().trim()
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun setTypeLogin(context: Context, type: String, textView: TextView) {
+        if (type == Constants.TYPE_VENDOR) {
+            textView.text =
+                context.getString(R.string.login_as) + " " + context.getString(R.string.vendor)
+        } else {
+            textView.text =
+                context.getString(R.string.login_as) + " " + context.getString(R.string.customer)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun setTypeRegister(context: Context, type: String, textView: TextInputEditText) {
+        if (type == Constants.TYPE_VENDOR) {
+            textView.setText(context.getString(R.string.vendor))
+        } else {
+            textView.setText(context.getString(R.string.customer))
+        }
     }
 
 }

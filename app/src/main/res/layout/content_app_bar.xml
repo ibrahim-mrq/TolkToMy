@@ -19,19 +19,21 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layoutDirection="inherit"
                 android:layout_centerInParent="true"
-                android:theme="@style/appBarStyleBoldText"
                 android:background="@color/colorPrimary"
                 app:title=" "
                 app:titleTextColor="@color/text" />
+<!--            android:theme="@style/appBarStyleBoldText"-->
 
             <TextView
                 android:id="@+id/tv_tool"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
+                android:paddingHorizontal="10dp"
                 android:fontFamily="@font/font_bold"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
                 android:textColor="@color/text"
                 android:textSize="17sp"
                 android:textStyle="bold"

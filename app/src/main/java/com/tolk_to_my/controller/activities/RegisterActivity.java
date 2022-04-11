@@ -6,10 +6,12 @@ import android.os.Bundle;
 import com.tolk_to_my.R;
 import com.tolk_to_my.databinding.ActivityRegisterBinding;
 import com.tolk_to_my.helpers.BaseActivity;
+import com.tolk_to_my.helpers.Constants;
 
 public class RegisterActivity extends BaseActivity {
 
     ActivityRegisterBinding binding;
+    String type = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +22,12 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void initView() {
+        type = getIntent().getStringExtra(Constants.USER_TYPE);
+
         binding.appbar.tvTool.setText(getString(R.string.register));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 
+        setTypeRegister(this, type, binding.etType);
         binding.btnLogin.setOnClickListener(view -> {
             startActivity(new Intent(this, MainActivity.class));
         });

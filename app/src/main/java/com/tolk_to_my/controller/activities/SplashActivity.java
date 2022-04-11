@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, ChooseLoginActivity.class));
             }
             finish();
-        }, 1000);
+        }, 3000);
 
     }
 
