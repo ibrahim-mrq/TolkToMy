@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.tolk_to_my.R;
 import com.tolk_to_my.databinding.ActivitySettingBinding;
 import com.tolk_to_my.helpers.BaseActivity;
+import com.tolk_to_my.helpers.Constants;
+import com.tolk_to_my.utils.Utils;
 
 public class SettingActivity extends BaseActivity {
 
@@ -21,6 +23,19 @@ public class SettingActivity extends BaseActivity {
     private void initView() {
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
         binding.appbar.tvTool.setText(getString(R.string.setting));
+
+        binding.imgWhatsapp.setOnClickListener(view -> {
+            new Utils().openWhatsApp(this);
+        });
+        binding.imgCall.setOnClickListener(view -> {
+            new Utils().openPhoneCall(this);
+        });
+        binding.imgMessage.setOnClickListener(view -> {
+            new Utils().openPhoneMessage(this);
+        });
+        binding.btnLogout.setOnClickListener(view -> {
+            Constants.logout(this);
+        });
     }
 
     @Override

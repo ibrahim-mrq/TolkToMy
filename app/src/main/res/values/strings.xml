@@ -34,5 +34,6 @@
     <string name="profile">الملف الشخصي</string>
     <string name="logout">تسجيل خروج</string>
     <string name="setting">الاعدادات</string>
+    <string name="about">نبذة عن التطبيق</string>
 
 </resources>
