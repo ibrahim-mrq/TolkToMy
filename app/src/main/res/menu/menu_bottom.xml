@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reviewers"
+        android:icon="@drawable/ic_reviewers"
+        android:title="المراجعين" />
+    <item
+        android:id="@+id/review_sessions"
+        android:icon="@drawable/ic_review_sessions"
+        android:title="جلسات المراجعة" />
+    <item
+        android:id="@+id/diagnostics"
+        android:icon="@drawable/ic_diagnostics"
+        android:title="التشخيصات" />
+    <item
+        android:id="@+id/vital_signs"
+        android:icon="@drawable/ic_vital_signs"
+        android:title="العلامات الحيوية" />
+
+</menu>
