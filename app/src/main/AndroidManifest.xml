@@ -15,8 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".controller.activities.ProfileActivity"></activity>
-        <activity android:name=".controller.activities.SettingActivity" />
+
         <activity
             android:name=".controller.activities.SplashActivity"
             android:exported="true">
@@ -38,6 +37,13 @@
         <activity
             android:name=".controller.activities.RegisterActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".controller.activities.ProfileActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".controller.activities.SettingActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
     </application>
 
 </manifest>
