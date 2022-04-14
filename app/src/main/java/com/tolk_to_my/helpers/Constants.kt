@@ -5,6 +5,7 @@ package com.tolk_to_my.helpers
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.orhanobut.hawk.Hawk
 import com.tolk_to_my.BuildConfig
 import com.tolk_to_my.controller.activities.SplashActivity
@@ -22,7 +23,6 @@ object Constants {
     const val TYPE_MODEL = "type_model"
 
     const val IS_FIRST_LOGIN = "is_first_login"
-    const val WELCOME_BACK = "welcome_back"
     const val IS_LOGIN = "is_login"
     const val USER = "user"
     const val USER_ID = "user_id"
@@ -43,6 +43,7 @@ object Constants {
     @JvmStatic
     fun logout(context: Context) {
         Hawk.deleteAll()
+        FirebaseAuth.getInstance().signOut();
         Toast.makeText(context, "تم تسجيل الخروج بنجاح", Toast.LENGTH_SHORT).show()
         context.startActivity(Intent(context, SplashActivity::class.java))
     }

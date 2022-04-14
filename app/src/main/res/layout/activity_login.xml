@@ -34,21 +34,21 @@
                 tools:ignore="ContentDescription" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_id"
+                android:id="@+id/tv_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="@string/id"
+                android:hint="@string/email"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
                 app:hintTextColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_id"
+                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/font_regular"

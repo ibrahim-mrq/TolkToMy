@@ -57,39 +57,6 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    fun isNotEmpty(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
-        return if (editText.text.toString().isBlank()) {
-            textInputLayout.isErrorEnabled = true
-            textInputLayout.error = getString(R.string.empty_field)
-            false
-        } else {
-            textInputLayout.isErrorEnabled = false
-            true
-        }
-    }
-
-    fun isNotEmpty(editText: AutoCompleteTextView, textInputLayout: TextInputLayout): Boolean {
-        return if (editText.text.toString().isBlank()) {
-            textInputLayout.isErrorEnabled = true
-            textInputLayout.error = getString(R.string.empty_field)
-            false
-        } else {
-            textInputLayout.isErrorEnabled = false
-            true
-        }
-    }
-
-    fun isValidEmail(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
-        return if (Patterns.EMAIL_ADDRESS.matcher(editText.text.toString()).matches()) {
-            textInputLayout.isErrorEnabled = false
-            true
-        } else {
-            textInputLayout.error = getString(R.string.invalid_email)
-            textInputLayout.isErrorEnabled = true
-            false
-        }
-    }
-
     open fun showErrorAlert(
         title: String?,
         text: String?,
@@ -171,4 +138,36 @@ open class BaseFragment : Fragment() {
         return editText.text.toString().trim()
     }
 
+    fun isNotEmpty(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
+        return if (editText.text.toString().isBlank()) {
+            textInputLayout.isErrorEnabled = true
+            textInputLayout.error = getString(R.string.empty_field)
+            false
+        } else {
+            textInputLayout.isErrorEnabled = false
+            true
+        }
+    }
+
+    fun isNotEmpty(editText: AutoCompleteTextView, textInputLayout: TextInputLayout): Boolean {
+        return if (editText.text.toString().isBlank()) {
+            textInputLayout.isErrorEnabled = true
+            textInputLayout.error = getString(R.string.empty_field)
+            false
+        } else {
+            textInputLayout.isErrorEnabled = false
+            true
+        }
+    }
+
+    fun isValidEmail(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
+        return if (Patterns.EMAIL_ADDRESS.matcher(editText.text.toString()).matches()) {
+            textInputLayout.isErrorEnabled = false
+            true
+        } else {
+            textInputLayout.error = getString(R.string.invalid_email)
+            textInputLayout.isErrorEnabled = true
+            false
+        }
+    }
 }

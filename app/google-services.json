@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595457482958",
+    "project_id": "tolktomy-dda1c",
+    "storage_bucket": "tolktomy-dda1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595457482958:android:81d36ce38eea7c01ed309f",
+        "android_client_info": {
+          "package_name": "com.tolk_to_my"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595457482958-k5fu3vijh77ud16b42m8utol54ad9j9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBNNfc3evMohZrY6PlHjQxKmZpKaG23xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595457482958-k5fu3vijh77ud16b42m8utol54ad9j9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,6 +9,14 @@ import android.content.pm.Signature;
 import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tolk_to_my.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -62,5 +70,21 @@ public class Utils {
         } catch (Exception e) {
             Log.e("response", "ERROR WHATSAPP = " + e.toString());
         }
+    }
+
+    private void toast(Activity context) {
+        LayoutInflater inflater = context.getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, context.findViewById(R.id.toast_layout_root));
+
+        ImageView image = layout.findViewById(R.id.image);
+        image.setImageResource(R.drawable.ic_logout);
+        TextView text = layout.findViewById(R.id.text);
+        text.setText("Hello! This is a custom toast!");
+
+        Toast toast = new Toast(context.getApplicationContext());
+        toast.setGravity(Gravity.TOP | Gravity.START, 10, 100);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }

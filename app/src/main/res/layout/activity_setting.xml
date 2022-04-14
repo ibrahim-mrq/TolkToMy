@@ -85,6 +85,35 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_language"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/language"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

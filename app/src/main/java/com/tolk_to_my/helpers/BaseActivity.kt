@@ -63,40 +63,6 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun isNotEmpty(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
-        return if (editText.text.toString().isBlank()) {
-            textInputLayout.isErrorEnabled = true
-            textInputLayout.error = getString(R.string.empty_field)
-            false
-        } else {
-            textInputLayout.isErrorEnabled = false
-            true
-        }
-    }
-
-    fun isNotEmpty(editText: AutoCompleteTextView, textInputLayout: TextInputLayout): Boolean {
-        return if (editText.text.toString().isBlank()) {
-            textInputLayout.isErrorEnabled = true
-            textInputLayout.error = getString(R.string.empty_field)
-            false
-        } else {
-            textInputLayout.isErrorEnabled = false
-            true
-        }
-    }
-
-    fun isValidEmail(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
-        return if (Patterns.EMAIL_ADDRESS.matcher(editText.text.toString()).matches()) {
-            textInputLayout.isErrorEnabled = false
-            true
-        } else {
-            textInputLayout.error = getString(R.string.invalid_email)
-            textInputLayout.isErrorEnabled = true
-            false
-        }
-    }
-
-
     open fun showErrorAlert(
         activity: Activity?,
         title: String?,
@@ -179,7 +145,73 @@ open class BaseActivity : AppCompatActivity() {
             .show()
     }
 
+    fun isNotEmpty(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
+        return if (editText.text.toString().isBlank()) {
+            textInputLayout.isErrorEnabled = true
+            textInputLayout.error = getString(R.string.empty_field)
+            false
+        } else {
+            textInputLayout.isErrorEnabled = false
+            true
+        }
+    }
+
+    fun isNotEmpty(editText: AutoCompleteTextView, textInputLayout: TextInputLayout): Boolean {
+        return if (editText.text.toString().isBlank()) {
+            textInputLayout.isErrorEnabled = true
+            textInputLayout.error = getString(R.string.empty_field)
+            false
+        } else {
+            textInputLayout.isErrorEnabled = false
+            true
+        }
+    }
+
+    fun isValidEmail(editText: TextInputEditText, textInputLayout: TextInputLayout): Boolean {
+        return if (Patterns.EMAIL_ADDRESS.matcher(editText.text.toString()).matches()) {
+            textInputLayout.isErrorEnabled = false
+            true
+        } else {
+            textInputLayout.error = getString(R.string.invalid_email)
+            textInputLayout.isErrorEnabled = true
+            false
+        }
+    }
+
+    fun isPasswordLess(pass: TextInputEditText, text: TextInputLayout): Boolean {
+        return if (pass.text.toString().trim().length >= 6) {
+            text.isErrorEnabled = false
+            true
+        } else {
+            text.error = getString(R.string.password_less_6_char)
+            text.isErrorEnabled = true
+            false
+        }
+    }
+
+    fun isPasswordMatch(
+        pass: TextInputEditText,
+        text: TextInputLayout,
+        re_pass: TextInputEditText,
+        re_text: TextInputLayout
+    ): Boolean {
+        return if (pass.text.toString().trim() == re_pass.text.toString().trim()) {
+            text.isErrorEnabled = false
+            re_text.isErrorEnabled = false
+            true
+        } else {
+            text.error = getString(R.string.password_not_match)
+            text.isErrorEnabled = true
+            re_text.error = getString(R.string.password_not_match)
+            re_text.isErrorEnabled = true
+            false
+        }
+    }
+
     fun getText(editText: TextInputEditText): String {
+        return editText.text.toString().trim()
+    }
+    fun getText(editText: AutoCompleteTextView): String {
         return editText.text.toString().trim()
     }
 
