@@ -216,17 +216,6 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun setTypeLogin(context: Context, type: String, textView: TextView) {
-        if (type == Constants.TYPE_VENDOR) {
-            textView.text =
-                context.getString(R.string.login_as) + " " + context.getString(R.string.vendor)
-        } else {
-            textView.text =
-                context.getString(R.string.login_as) + " " + context.getString(R.string.customer)
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
     fun setTypeRegister(context: Context, type: String, textView: TextInputEditText) {
         if (type == Constants.TYPE_VENDOR) {
             textView.setText(context.getString(R.string.vendor))

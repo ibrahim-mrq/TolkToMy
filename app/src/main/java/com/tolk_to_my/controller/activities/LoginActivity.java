@@ -25,7 +25,6 @@ public class LoginActivity extends BaseActivity {
     ActivityLoginBinding binding;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String type = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +35,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initView() {
-        type = getIntent().getStringExtra(Constants.USER_TYPE);
 
-        setTypeLogin(this, type, binding.appbar.tvTool);
+        binding.appbar.tvTool.setText(getString(R.string.login));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 
         binding.btnLogin.setOnClickListener(view -> {
@@ -49,9 +47,7 @@ public class LoginActivity extends BaseActivity {
             }
         });
         binding.tvRegister.setOnClickListener(view -> {
-            startActivity(new Intent(this, RegisterActivity.class)
-                    .putExtra(Constants.USER_TYPE, type)
-            );
+            startActivity(new Intent(this, ChooseLoginActivity.class));
         });
 
     }
@@ -84,20 +80,21 @@ public class LoginActivity extends BaseActivity {
                         DocumentSnapshot document = task.getResult();
                         User user = document.toObject(User.class);
                         assert user != null;
-                        if (user.getType().equals(type)) {
-                            showAlert(this, "", "تم تسجيل الدحول بنجاح");
-                            Hawk.put(Constants.IS_LOGIN, true);
-                            Hawk.put(Constants.USER, user);
-                            Hawk.put(Constants.USER_ID, Objects.requireNonNull(auth.getCurrentUser()).getUid());
-                            new Handler().postDelayed(() -> {
-                                enableElements(true);
-                                startActivity(new Intent(this, MainActivity.class));
-                                finish();
-                            }, 2000);
-                        } else {
+                        showAlert(this, "", "تم تسجيل الدحول بنجاح");
+                        Hawk.put(Constants.IS_LOGIN, true);
+                        Hawk.put(Constants.USER, user);
+                        Hawk.put(Constants.USER_ID, Objects.requireNonNull(auth.getCurrentUser()).getUid());
+                        new Handler().postDelayed(() -> {
                             enableElements(true);
-                            showErrorAlert(this, "هناك خطا ما", "يرجى التحقق نوع تسجيل الدخول");
-                        }
+                            if (user.getType().equals(Constants.TYPE_CUSTOMER)) {
+                                Hawk.put(Constants.USER_TYPE, Constants.TYPE_CUSTOMER);
+                                startActivity(new Intent(this, FamilyActivity.class));
+                            } else {
+                                Hawk.put(Constants.USER_TYPE, Constants.TYPE_VENDOR);
+                                startActivity(new Intent(this, MainActivity.class));
+                            }
+                            finish();
+                        }, 2000);
                     }
                 });
     }

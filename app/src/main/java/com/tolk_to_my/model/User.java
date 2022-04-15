@@ -4,33 +4,33 @@ import org.jetbrains.annotations.NotNull;
 
 public class User {
 
-    private String name;
-    private String specialize;
-    private String id;
-    private String phone;
     private String birthday;
     private String email;
-    private String password;
     private String gender;
-    private String type;
+    private String id;
+    private String name;
+    private String password;
+    private String phone;
+    private String specialize;
     private String token;
+    private String type;
 
     public User() {
     }
 
-    public User(String name, String specialize, String id, String phone, String birthday,
-                String email, String password, String gender, String type, String token) {
-        this.name = name;
-        this.specialize = specialize;
-        this.id = id;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.type = type;
-        this.token = token;
-    }
+//    public User(String name, String specialize, String id, String phone, String birthday,
+//                String email, String password, String gender, String type, String token) {
+//        this.name = name;
+//        this.specialize = specialize;
+//        this.id = id;
+//        this.phone = phone;
+//        this.birthday = birthday;
+//        this.email = email;
+//        this.password = password;
+//        this.gender = gender;
+//        this.type = type;
+//        this.token = token;
+//    }
 
     @NotNull
     @Override

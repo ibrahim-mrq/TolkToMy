@@ -40,5 +40,14 @@
     <string name="about">نبذة عن التطبيق</string>
     <string name="language">اللغة</string>
     <string name="gender">الجنس</string>
+    <string name="family">افراد الاسرة</string>
+    <string name="age">العمر</string>
+    <string name="disability">نوع الاعاقة</string>
+    <string name="doctor">الطبيب المعالج</string>
+    <string name="open_file">فتح ملف</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="medical_awareness">التوعية الطبية</string>
+    <string name="gender_doctor">جنس الطبيب المعالج</string>
 
 </resources>

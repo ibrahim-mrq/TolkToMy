@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:theme="@style/MaterialTheme"
-    tools:context=".controller.activities.RegisterActivity">
+    tools:context=".controller.activities.AddFamilyActivity">
 
     <include
         android:id="@+id/appbar"
@@ -59,70 +59,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_specialize"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/specialize"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                android:visibility="gone"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
-
-                <AutoCompleteTextView
-                    android:id="@+id/et_specialize"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:fontFamily="@font/font_regular"
-                    android:inputType="textAutoComplete"
-                    android:longClickable="false"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_gender"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:visibility="gone"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/gender"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
-
-                <AutoCompleteTextView
-                    android:id="@+id/et_gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:fontFamily="@font/font_regular"
-                    android:inputType="textAutoComplete"
-                    android:longClickable="false"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tv_id"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
@@ -150,25 +86,25 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_phone"
+                android:id="@+id/tv_age"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="@string/phone"
+                android:hint="@string/age"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
                 app:hintTextColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_phone"
+                    android:id="@+id/et_age"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
@@ -207,113 +143,127 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/tv_gender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="@string/email"
+                android:hint="@string/gender"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
                 app:hintTextColor="@color/colorAccent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
+                <AutoCompleteTextView
+                    android:id="@+id/et_gender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/tv_disability"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="@string/password"
+                android:hint="@string/disability"
                 app:boxStrokeColor="@color/colorAccent"
-                app:endIconMode="password_toggle"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
                 app:hintTextColor="@color/colorAccent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
+                <AutoCompleteTextView
+                    android:id="@+id/et_disability"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="textPassword"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_re_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/tv_gender_doctor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="@string/re_password"
+                android:hint="@string/gender_doctor"
                 app:boxStrokeColor="@color/colorAccent"
-                app:endIconMode="password_toggle"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
                 app:hintTextColor="@color/colorAccent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_re_password"
+                <AutoCompleteTextView
+                    android:id="@+id/et_gender_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="textPassword"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_type"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/tv_doctor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="@string/type"
-                app:boxStrokeColor="@color/textSecondary"
+                android:enabled="false"
+                android:hint="@string/doctor"
+                app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/textSecondary">
+                app:hintTextColor="@color/colorAccent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_type"
+                <AutoCompleteTextView
+                    android:id="@+id/et_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
                     android:textAlignment="textStart"
-                    android:textColor="@color/textSecondary"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -325,12 +275,12 @@
                 android:layout_marginBottom="40dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_login"
+                    android:id="@+id/btn_save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_accent"
                     android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/register"
+                    android:text="@string/open_file"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textStyle="bold"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/family"
+        android:icon="@drawable/ic_family_members"
+        android:title="@string/family" />
+    <item
+        android:id="@+id/medical_awareness"
+        android:icon="@drawable/ic_vital_signs"
+        android:title="@string/medical_awareness" />
+
+</menu>

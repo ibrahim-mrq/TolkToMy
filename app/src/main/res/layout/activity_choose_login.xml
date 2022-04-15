@@ -51,12 +51,14 @@
                 <LinearLayout
                     android:id="@+id/vendor"
                     android:layout_width="100dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="30dp"
                     android:background="@drawable/shape_vendor"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UnusedAttribute">
 
                     <ImageView
                         android:layout_width="50dp"
@@ -80,10 +82,12 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_marginHorizontal="30dp"
                     android:background="@drawable/shape_customer"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UnusedAttribute">
 
                     <ImageView
                         android:layout_width="50dp"

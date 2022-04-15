@@ -49,7 +49,9 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 
         setTypeRegister(this, type, binding.etType);
-        initSpecialize();
+        if (type.equals(Constants.TYPE_VENDOR)) {
+            initSpecialize();
+        }
         binding.etBirth.setOnClickListener(view -> {
             new DatePickerDialog(
                     this,
@@ -62,7 +64,11 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
 
         binding.btnLogin.setOnClickListener(view -> {
             if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
-                register();
+                if (type.equals(Constants.TYPE_VENDOR)) {
+                    registerVendor();
+                } else {
+                    registerCustomer();
+                }
             } else {
                 showOfflineAlert(this, "", getString(R.string.no_internet));
             }
@@ -79,15 +85,17 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
         list.add("متلازم الدون");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         binding.etSpecialize.setAdapter(adapter);
+        binding.tvSpecialize.setVisibility(View.VISIBLE);
 
         ArrayList<String> genders = new ArrayList<>();
         genders.add("اخصائية");
         genders.add("اخصائي");
         ArrayAdapter<String> gendersAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, genders);
         binding.etGender.setAdapter(gendersAdapter);
+        binding.tvGender.setVisibility(View.VISIBLE);
     }
 
-    private void register() {
+    private void registerVendor() {
         if (isNotEmpty(binding.etName, binding.tvName)
                 && isNotEmpty(binding.etSpecialize, binding.tvSpecialize)
                 && isNotEmpty(binding.etGender, binding.tvGender)
@@ -111,6 +119,7 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
             user.setBirthday(getText(binding.etBirth));
             user.setEmail(getText(binding.etEmail));
             user.setPassword(getText(binding.etPassword));
+            user.setGender(getText(binding.etGender));
             user.setType(type);
             enableElements(false);
             auth.createUserWithEmailAndPassword(getText(binding.etEmail), getText(binding.etPassword))
@@ -127,7 +136,70 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                                         Hawk.put(Constants.USER_ID, auth.getUid());
                                         new Handler().postDelayed(() -> {
                                             enableElements(true);
-                                            startActivity(new Intent(this, MainActivity.class));
+                                            if (user.getType().equals(Constants.TYPE_CUSTOMER)) {
+                                                Hawk.put(Constants.USER_TYPE, Constants.TYPE_CUSTOMER);
+                                                startActivity(new Intent(this, FamilyActivity.class));
+                                            } else {
+                                                Hawk.put(Constants.USER_TYPE, Constants.TYPE_VENDOR);
+                                                startActivity(new Intent(this, MainActivity.class));
+                                            }
+                                            finish();
+                                        }, 2000);
+                                    });
+                        } else {
+                            enableElements(true);
+                            showErrorAlert(this, "لا يمكن انشاء حساب", "يرجى التاكد من صحة جميع البيانات");
+                        }
+                    });
+        }
+    }
+
+    private void registerCustomer() {
+        if (isNotEmpty(binding.etName, binding.tvName)
+                && isNotEmpty(binding.etId, binding.tvId)
+                && isNotEmpty(binding.etPhone, binding.tvPhone)
+                && isNotEmpty(binding.etBirth, binding.tvBirth)
+                && isNotEmpty(binding.etEmail, binding.tvEmail)
+                && isValidEmail(binding.etEmail, binding.tvEmail)
+                && isNotEmpty(binding.etPassword, binding.tvPassword)
+                && isNotEmpty(binding.etRePassword, binding.tvRePassword)
+                && isPasswordLess(binding.etPassword, binding.tvPassword)
+                && isNotEmpty(binding.etRePassword, binding.tvRePassword)
+                && isPasswordLess(binding.etRePassword, binding.tvRePassword)
+                && isPasswordMatch(binding.etPassword, binding.tvPassword, binding.etRePassword, binding.tvRePassword)
+        ) {
+            User user = new User();
+            user.setName(getText(binding.etName));
+            user.setSpecialize("");
+            user.setGender("");
+            user.setId(getText(binding.etId));
+            user.setPhone(getText(binding.etPhone));
+            user.setBirthday(getText(binding.etBirth));
+            user.setEmail(getText(binding.etEmail));
+            user.setPassword(getText(binding.etPassword));
+            user.setType(type);
+            enableElements(false);
+            auth.createUserWithEmailAndPassword(getText(binding.etEmail), getText(binding.etPassword))
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            user.setToken(auth.getUid());
+                            db.collection("User")
+                                    .document(Objects.requireNonNull(auth.getUid()))
+                                    .set(user)
+                                    .addOnSuccessListener(unused -> {
+                                        showAlert(this, "", "تم انشاء حساب جديد بنجاح");
+                                        Hawk.put(Constants.IS_LOGIN, true);
+                                        Hawk.put(Constants.USER, user);
+                                        Hawk.put(Constants.USER_ID, auth.getUid());
+                                        new Handler().postDelayed(() -> {
+                                            enableElements(true);
+                                            if (user.getType().equals(Constants.TYPE_CUSTOMER)) {
+                                                Hawk.put(Constants.USER_TYPE, Constants.TYPE_CUSTOMER);
+                                                startActivity(new Intent(this, FamilyActivity.class));
+                                            } else {
+                                                Hawk.put(Constants.USER_TYPE, Constants.TYPE_VENDOR);
+                                                startActivity(new Intent(this, MainActivity.class));
+                                            }
                                             finish();
                                         }, 2000);
                                     });

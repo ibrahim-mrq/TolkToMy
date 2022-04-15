@@ -22,7 +22,7 @@ public class ChooseLoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         binding.appbar.tvTool.setText(getString(R.string.login));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 

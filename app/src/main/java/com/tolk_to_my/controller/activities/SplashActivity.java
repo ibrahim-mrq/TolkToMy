@@ -25,9 +25,13 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             if (Hawk.get(Constants.IS_LOGIN, false)) {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                if (Hawk.get(Constants.USER_TYPE).equals(Constants.TYPE_CUSTOMER)) {
+                    startActivity(new Intent(this, FamilyActivity.class));
+                } else {
+                    startActivity(new Intent(this, MainActivity.class));
+                }
             } else {
-                startActivity(new Intent(SplashActivity.this, ChooseLoginActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             }
             finish();
         }, 3000);
