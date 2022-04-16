@@ -49,5 +49,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="medical_awareness">التوعية الطبية</string>
     <string name="gender_doctor">جنس الطبيب المعالج</string>
+    <string name="add_family">اضافة فرد اسرة جديد</string>
 
 </resources>

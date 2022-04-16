@@ -48,9 +48,9 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
         binding.appbar.tvTool.setText(getString(R.string.register));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 
-        setTypeRegister(this, type, binding.etType);
+        setUserType(this, type, binding.etType);
         if (type.equals(Constants.TYPE_VENDOR)) {
-            initSpecialize();
+            initDropDownLists();
         }
         binding.etBirth.setOnClickListener(view -> {
             new DatePickerDialog(
@@ -76,7 +76,7 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
 
     }
 
-    private void initSpecialize() {
+    private void initDropDownLists() {
         ArrayList<String> list = new ArrayList<>();
         list.add("تخاطب");
         list.add("اضطرابات نفسبه");
@@ -244,4 +244,5 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
         super.onBackPressed();
         finish();
     }
+
 }

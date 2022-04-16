@@ -68,6 +68,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/font_regular"
                 android:hint="@string/specialize"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
@@ -75,6 +76,35 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_specialize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="text"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_gender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/gender"
+                android:visibility="gone"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_gender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="false"
@@ -206,7 +236,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
                 android:fontFamily="@font/font_regular"
                 android:hint="@string/password"
                 app:boxStrokeColor="@color/colorAccent"
@@ -224,6 +253,35 @@
                     android:inputType="textPassword"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/type"
+                app:boxStrokeColor="@color/textSecondary"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/textSecondary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="text"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/textSecondary"
                     android:textStyle="bold"
                     tools:ignore="RtlSymmetry" />
 

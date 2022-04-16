@@ -216,7 +216,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun setTypeRegister(context: Context, type: String, textView: TextInputEditText) {
+    fun setUserType(context: Context, type: String, textView: TextInputEditText) {
         if (type == Constants.TYPE_VENDOR) {
             textView.setText(context.getString(R.string.vendor))
         } else {
