@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
+import com.tolk_to_my.controller.adapter.DisabilitySelectedAdapter;
 import com.tolk_to_my.databinding.ActivityAddFamilyBinding;
 import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
@@ -31,6 +32,7 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
     ActivityAddFamilyBinding binding;
     Calendar myCalendar = Calendar.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DisabilitySelectedAdapter selectedAdapter;
     String doctorToken = "";
     String doctorGender = "";
     String specialize = "";

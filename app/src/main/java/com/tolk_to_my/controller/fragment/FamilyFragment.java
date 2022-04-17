@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
 import com.tolk_to_my.controller.activities.AddFamilyActivity;
@@ -79,23 +80,21 @@ public class FamilyFragment extends BaseFragment implements SwipeRefreshLayout.O
         binding.include.swipeToRefresh.setRefreshing(false);
         db.collection("FamilyMember")
                 .whereEqualTo("parent_token", Hawk.get(Constants.USER_TOKEN))
-                .get()
-                .addOnCompleteListener(task -> {
+                .addSnapshotListener((query, error) -> {
                     list.clear();
-                    if (task.isSuccessful()) {
-                        for (DocumentSnapshot document : task.getResult()) {
+                    if (query != null) {
+                        for (QueryDocumentSnapshot document : query) {
                             list.add(document.toObject(FamilyMember.class));
                         }
                         if (list.isEmpty()) {
                             binding.include.statefulLayout.showEmpty();
                         } else {
                             binding.include.statefulLayout.showContent();
-                            adapter.setList(list);
                         }
+                        adapter.setList(list);
                     } else {
-                        binding.include.statefulLayout.showError(getString(R.string.empty_data), view -> {
-                            loadData();
-                        });
+                        binding.include.statefulLayout.showError(
+                                getString(R.string.empty_data), view -> loadData());
                     }
                 });
     }
