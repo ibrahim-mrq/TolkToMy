@@ -1,6 +1,7 @@
 package com.tolk_to_my.controller.activities;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -8,14 +9,18 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
+import com.tolk_to_my.controller.adapter.DisabilityAdapter;
 import com.tolk_to_my.controller.adapter.DisabilitySelectedAdapter;
 import com.tolk_to_my.databinding.ActivityAddFamilyBinding;
+import com.tolk_to_my.databinding.CustomDialogListBinding;
 import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.model.FamilyMember;
@@ -33,6 +38,9 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
     Calendar myCalendar = Calendar.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DisabilitySelectedAdapter selectedAdapter;
+    ArrayList<String> localListDisability = new ArrayList<>();
+    ArrayList<String> disability = new ArrayList<>();
+
     String doctorToken = "";
     String doctorGender = "";
     String specialize = "";
@@ -49,6 +57,22 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
         binding.appbar.tvTool.setText(getString(R.string.add_family));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
         initDropDownLists();
+
+        binding.uploadDisability.setVisibility(View.GONE);
+        selectedAdapter = new DisabilitySelectedAdapter(this);
+        selectedAdapter.setRemoveInterface((model, position) -> {
+            disability.add(model);
+            localListDisability.remove(position);
+            if (localListDisability.isEmpty()) {
+                binding.uploadDisability.setVisibility(View.GONE);
+            } else {
+                binding.uploadDisability.setVisibility(View.VISIBLE);
+            }
+            selectedAdapter.setList(localListDisability);
+        });
+        binding.recyclerView.setAdapter(selectedAdapter);
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         binding.etBirth.setOnClickListener(view -> {
             new DatePickerDialog(
@@ -72,67 +96,71 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
         ArrayAdapter<String> gendersAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, gendersList);
         binding.etGender.setAdapter(gendersAdapter);
 
-        ArrayList<String> gendersDoctorList = new ArrayList<>();
-        gendersDoctorList.add("اخصائية");
-        gendersDoctorList.add("اخصائي");
-        ArrayAdapter<String> gendersDoctorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, gendersDoctorList);
-        binding.etGenderDoctor.setAdapter(gendersDoctorAdapter);
-        binding.etGenderDoctor.setThreshold(1);
-        binding.etGenderDoctor.setOnItemClickListener((adapterView, view, position, l) -> {
-            doctorGender = (String) adapterView.getItemAtPosition(position);
-            if (!doctorGender.isEmpty() && !specialize.isEmpty()) {
-                loadDoctors();
-            }
-        });
+//        ArrayList<String> gendersDoctorList = new ArrayList<>();
+//        gendersDoctorList.add("اخصائية");
+//        gendersDoctorList.add("اخصائي");
+//        ArrayAdapter<String> gendersDoctorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, gendersDoctorList);
+//        binding.etGenderDoctor.setAdapter(gendersDoctorAdapter);
+//        binding.etGenderDoctor.setThreshold(1);
+//        binding.etGenderDoctor.setOnItemClickListener((adapterView, view, position, l) -> {
+//            doctorGender = (String) adapterView.getItemAtPosition(position);
+//            if (!doctorGender.isEmpty() && !specialize.isEmpty()) {
+//                loadDoctors();
+//            }
+//        });
         ArrayList<String> disabilityList = new ArrayList<>();
         disabilityList.add("تخاطب");
         disabilityList.add("اضطرابات نفسبه");
         disabilityList.add("اضطرابات سلوكيه");
         disabilityList.add("التوحد");
         disabilityList.add("متلازم الدون");
-        ArrayAdapter<String> disabilityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, disabilityList);
-        binding.etDisability.setAdapter(disabilityAdapter);
-        binding.etDisability.setOnItemClickListener((adapterView, view, position, l) -> {
-            specialize = (String) adapterView.getItemAtPosition(position);
-            if (!doctorGender.isEmpty() && !specialize.isEmpty()) {
-                loadDoctors();
-            }
+        binding.etDisability.setOnClickListener(view -> {
+            dialogCategory("", disabilityList);
         });
 
+//        ArrayAdapter<String> disabilityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, disabilityList);
+//        binding.etDisability.setAdapter(disabilityAdapter);
+//        binding.etDisability.setOnItemClickListener((adapterView, view, position, l) -> {
+//            specialize = (String) adapterView.getItemAtPosition(position);
+//            if (!doctorGender.isEmpty() && !specialize.isEmpty()) {
+//                loadDoctors();
+//            }
+//        });
+
     }
 
-    private void loadDoctors() {
-        ArrayList<String> doctorList = new ArrayList<>();
-        ArrayList<User> list = new ArrayList<>();
-        db.collection("User")
-                .whereEqualTo("type", "vendor")
-                .whereEqualTo("gender", doctorGender)
-                .whereEqualTo("specialize", specialize)
-                .addSnapshotListener((value, error) -> {
-                    list.clear();
-                    doctorList.clear();
-                    if (!Objects.requireNonNull(value).isEmpty()) {
-                        for (QueryDocumentSnapshot document : value) {
-                            User user = document.toObject(User.class);
-                            doctorList.add(user.getName());
-                            list.add(user);
-                        }
-                        ArrayAdapter<String> doctorAdapter = new ArrayAdapter<>(this,
-                                android.R.layout.simple_list_item_1, doctorList);
-                        binding.etDoctor.setAdapter(doctorAdapter);
-                        binding.etDoctor.setText("");
-                        binding.etDoctor.setOnItemClickListener((adapterView, view, position, l) -> {
-                            doctorToken = list.get(position).getToken();
-                        });
-                        binding.tvDoctor.setEnabled(true);
-                    } else {
-                        binding.etDoctor.setAdapter(null);
-                        binding.etDoctor.setText("");
-                        binding.tvDoctor.setEnabled(false);
-                        showOfflineAlert(this, "", "لا يوجد اطباء، الرجاء اختيار تصنيف اخر ");
-                    }
-                });
-    }
+//    private void loadDoctors() {
+//        ArrayList<String> doctorList = new ArrayList<>();
+//        ArrayList<User> list = new ArrayList<>();
+//        db.collection("User")
+//                .whereEqualTo("type", "vendor")
+//                .whereEqualTo("gender", doctorGender)
+//                .whereEqualTo("specialize", specialize)
+//                .addSnapshotListener((value, error) -> {
+//                    list.clear();
+//                    doctorList.clear();
+//                    if (!Objects.requireNonNull(value).isEmpty()) {
+//                        for (QueryDocumentSnapshot document : value) {
+//                            User user = document.toObject(User.class);
+//                            doctorList.add(user.getName());
+//                            list.add(user);
+//                        }
+//                        ArrayAdapter<String> doctorAdapter = new ArrayAdapter<>(this,
+//                                android.R.layout.simple_list_item_1, doctorList);
+//                        binding.etDoctor.setAdapter(doctorAdapter);
+//                        binding.etDoctor.setText("");
+//                        binding.etDoctor.setOnItemClickListener((adapterView, view, position, l) -> {
+//                            doctorToken = list.get(position).getToken();
+//                        });
+//                        binding.tvDoctor.setEnabled(true);
+//                    } else {
+//                        binding.etDoctor.setAdapter(null);
+//                        binding.etDoctor.setText("");
+//                        binding.tvDoctor.setEnabled(false);
+//                        showOfflineAlert(this, "", "لا يوجد اطباء، الرجاء اختيار تصنيف اخر ");
+//                    }
+//                });
+//    }
 
     private void addFamilyMember() {
         if (isNotEmpty(binding.etName, binding.tvName)
@@ -141,17 +169,15 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
                 && isNotEmpty(binding.etBirth, binding.tvBirth)
                 && isNotEmpty(binding.etGender, binding.tvGender)
                 && isNotEmpty(binding.etDisability, binding.tvDisability)
-                && isNotEmpty(binding.etGenderDoctor, binding.tvGenderDoctor)
-                && isNotEmpty(binding.etDoctor, binding.tvDoctor)
         ) {
             enableElements(false);
             FamilyMember model = new FamilyMember();
             model.setAge(getText(binding.etAge));
             model.setBirthday(getText(binding.etBirth));
             model.setDisability(getText(binding.etDisability));
-            model.setDoctor(getText(binding.etDoctor));
+            model.setDoctor("");
             model.setGender(getText(binding.etGender));
-            model.setGender_doctor(getText(binding.etGenderDoctor));
+            model.setGender_doctor("");
             model.setId(getText(binding.etId));
             model.setName(getText(binding.etName));
             model.setDoctor_token(doctorToken);
@@ -170,6 +196,36 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
                         }, 2000);
                     });
         }
+    }
+
+    private void dialogCategory(String title, ArrayList<String> list) {
+        Dialog dialog = new Dialog(this);
+        CustomDialogListBinding dialogBinding = CustomDialogListBinding.inflate(getLayoutInflater());
+        dialog.setContentView(dialogBinding.getRoot());
+        dialogBinding.tvTitle.setText(title);
+        DisabilityAdapter adapter = new DisabilityAdapter(this);
+        adapter.setAnInterface(model -> {
+            localListDisability.add(model);
+            adapter.remove(model);
+            if (localListDisability.isEmpty()) {
+                binding.uploadDisability.setVisibility(View.GONE);
+            } else {
+                binding.uploadDisability.setVisibility(View.VISIBLE);
+            }
+            selectedAdapter.setList(localListDisability);
+            dialog.dismiss();
+        });
+        dialogBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        dialogBinding.recyclerView.setHasFixedSize(false);
+        dialogBinding.recyclerView.setAdapter(adapter);
+        adapter.setList(list);
+
+        if (list.isEmpty()) {
+            dialogBinding.statefulLayout.showEmpty();
+        } else {
+            dialogBinding.statefulLayout.showContent();
+        }
+        dialog.show();
     }
 
     private void enableElements(boolean enable) {

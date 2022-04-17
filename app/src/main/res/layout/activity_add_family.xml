@@ -207,7 +207,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-                android:id="@+id/uploadCategory"
+                android:id="@+id/upload_disability"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -216,7 +216,7 @@
                 android:padding="2dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_category"
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never"
@@ -224,69 +224,6 @@
                     tools:listitem="@layout/custom_selected" />
 
             </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_gender_doctor"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/gender_doctor"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
-
-                <AutoCompleteTextView
-                    android:id="@+id/et_gender_doctor"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:fontFamily="@font/font_regular"
-                    android:inputType="textAutoComplete"
-                    android:longClickable="false"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_doctor"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:enabled="false"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/doctor"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
-
-                <AutoCompleteTextView
-                    android:id="@+id/et_doctor"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:fontFamily="@font/font_regular"
-                    android:inputType="textAutoComplete"
-                    android:longClickable="false"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
