@@ -153,7 +153,7 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
             model.setId(getText(binding.etId));
             model.setName(getText(binding.etName));
             model.setDoctor_token(doctorToken);
-            model.setParent_token(Hawk.get(Constants.USER_ID));
+            model.setParent_token(Hawk.get(Constants.USER_TOKEN));
             model.setToken("");
             db.collection("FamilyMember")
                     .add(model)

@@ -4,10 +4,13 @@ package com.tolk_to_my.helpers
 
 import android.content.Context
 import android.content.Intent
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.StringRes
 import com.google.firebase.auth.FirebaseAuth
 import com.orhanobut.hawk.Hawk
 import com.tolk_to_my.BuildConfig
+import com.tolk_to_my.R
 import com.tolk_to_my.controller.activities.SplashActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,6 +29,7 @@ object Constants {
     const val IS_LOGIN = "is_login"
     const val USER = "user"
     const val USER_ID = "user_id"
+    const val USER_TOKEN = "user_token"
     const val USER_TYPE = "user_type"
     const val TYPE_CUSTOMER = "customer"
     const val TYPE_VENDOR = "vendor"
@@ -48,5 +52,14 @@ object Constants {
         context.startActivity(Intent(context, SplashActivity::class.java))
     }
 
+
+    @JvmStatic
+    fun setText(
+        context: Context,
+        @StringRes string: Int,
+        text: String
+    ): String {
+        return context.getString(string) + context.getString(R.string.colon) + " " + text
+    }
 
 }

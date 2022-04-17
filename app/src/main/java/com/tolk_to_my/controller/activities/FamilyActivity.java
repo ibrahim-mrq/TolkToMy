@@ -39,17 +39,17 @@ public class FamilyActivity extends BaseActivity {
 
     @SuppressLint("NonConstantResourceId")
     private void bottomNavigation() {
-        replaceFragment(new FamilyFragment(), R.string.family);
+        replaceFragment(FamilyFragment.newInstance(), R.string.family);
         binding.main.bottomNavigation.getMenu().clear();
         binding.main.bottomNavigation.inflateMenu(R.menu.menu_bottom_family);
         binding.main.bottomNavigation.setSelectedItemId(R.id.home);
         binding.main.bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.family:
-                    replaceFragment(new FamilyFragment(), R.string.family);
+                    replaceFragment(FamilyFragment.newInstance(), R.string.family);
                     return true;
                 case R.id.medical_awareness:
-                    replaceFragment(new VideoFragment(), R.string.medical_awareness);
+                    replaceFragment(VideoFragment.newInstance(), R.string.medical_awareness);
                     return true;
             }
             return false;

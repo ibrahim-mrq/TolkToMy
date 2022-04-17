@@ -133,7 +133,7 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                                         showAlert(this, "", "تم انشاء حساب جديد بنجاح");
                                         Hawk.put(Constants.IS_LOGIN, true);
                                         Hawk.put(Constants.USER, user);
-                                        Hawk.put(Constants.USER_ID, auth.getUid());
+                                        Hawk.put(Constants.USER_TOKEN, auth.getUid());
                                         new Handler().postDelayed(() -> {
                                             enableElements(true);
                                             if (user.getType().equals(Constants.TYPE_CUSTOMER)) {
@@ -190,7 +190,7 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                                         showAlert(this, "", "تم انشاء حساب جديد بنجاح");
                                         Hawk.put(Constants.IS_LOGIN, true);
                                         Hawk.put(Constants.USER, user);
-                                        Hawk.put(Constants.USER_ID, auth.getUid());
+                                        Hawk.put(Constants.USER_TOKEN, auth.getUid());
                                         new Handler().postDelayed(() -> {
                                             enableElements(true);
                                             if (user.getType().equals(Constants.TYPE_CUSTOMER)) {

@@ -50,5 +50,6 @@
     <string name="medical_awareness">التوعية الطبية</string>
     <string name="gender_doctor">جنس الطبيب المعالج</string>
     <string name="add_family">اضافة فرد اسرة جديد</string>
+    <string name="colon">:</string>
 
 </resources>

@@ -83,7 +83,8 @@ public class LoginActivity extends BaseActivity {
                         showAlert(this, "", "تم تسجيل الدحول بنجاح");
                         Hawk.put(Constants.IS_LOGIN, true);
                         Hawk.put(Constants.USER, user);
-                        Hawk.put(Constants.USER_ID, Objects.requireNonNull(auth.getCurrentUser()).getUid());
+//                        Hawk.put(Constants.USER_ID, Objects.requireNonNull(auth.getCurrentUser()).getUid());
+                        Hawk.put(Constants.USER_TOKEN, user.getToken());
                         new Handler().postDelayed(() -> {
                             enableElements(true);
                             if (user.getType().equals(Constants.TYPE_CUSTOMER)) {
