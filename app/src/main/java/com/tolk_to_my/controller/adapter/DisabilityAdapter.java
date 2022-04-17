@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tolk_to_my.R;
 import com.tolk_to_my.controller.interfaces.DisabilityInterface;
-import com.tolk_to_my.controller.interfaces.RemoveInterface;
-import com.tolk_to_my.databinding.CustomDialogBinding;
-import com.tolk_to_my.databinding.CustomSelectedBinding;
+import com.tolk_to_my.databinding.CustomDialogTextBinding;
 
 import java.util.ArrayList;
 
@@ -47,7 +45,7 @@ public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.Ca
     @NonNull
     @Override
     public CategorySubViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_dialog, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_dialog_text, parent, false);
         return new CategorySubViewHolder(v);
     }
 
@@ -69,11 +67,11 @@ public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.Ca
 
     public static class CategorySubViewHolder extends RecyclerView.ViewHolder {
 
-        CustomDialogBinding binding;
+        CustomDialogTextBinding binding;
 
         private CategorySubViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = CustomDialogBinding.bind(itemView);
+            binding = CustomDialogTextBinding.bind(itemView);
         }
 
         private void bind(String model) {

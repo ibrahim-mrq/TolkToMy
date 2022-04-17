@@ -96,6 +96,16 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
         ArrayAdapter<String> gendersAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, gendersList);
         binding.etGender.setAdapter(gendersAdapter);
 
+        disability.add("تخاطب");
+        disability.add("اضطرابات نفسبه");
+        disability.add("اضطرابات سلوكيه");
+        disability.add("التوحد");
+        disability.add("متلازم الدون");
+        binding.etDisability.setOnClickListener(view -> {
+            dialogDisability("تحديد نوع الاعاقة", disability);
+        });
+
+
 //        ArrayList<String> gendersDoctorList = new ArrayList<>();
 //        gendersDoctorList.add("اخصائية");
 //        gendersDoctorList.add("اخصائي");
@@ -108,15 +118,6 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
 //                loadDoctors();
 //            }
 //        });
-        ArrayList<String> disabilityList = new ArrayList<>();
-        disabilityList.add("تخاطب");
-        disabilityList.add("اضطرابات نفسبه");
-        disabilityList.add("اضطرابات سلوكيه");
-        disabilityList.add("التوحد");
-        disabilityList.add("متلازم الدون");
-        binding.etDisability.setOnClickListener(view -> {
-            dialogCategory("", disabilityList);
-        });
 
 //        ArrayAdapter<String> disabilityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, disabilityList);
 //        binding.etDisability.setAdapter(disabilityAdapter);
@@ -198,7 +199,7 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
         }
     }
 
-    private void dialogCategory(String title, ArrayList<String> list) {
+    private void dialogDisability(String title, ArrayList<String> list) {
         Dialog dialog = new Dialog(this);
         CustomDialogListBinding dialogBinding = CustomDialogListBinding.inflate(getLayoutInflater());
         dialog.setContentView(dialogBinding.getRoot());
