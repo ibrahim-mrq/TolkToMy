@@ -49,6 +49,9 @@
         <activity
             android:name=".controller.activities.FamilyActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".controller.activities.FamilyMemberDetailActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
     </application>
 
 </manifest>

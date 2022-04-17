@@ -5,6 +5,8 @@
     <color name="colorPrimaryDark">#063a35</color>
     <color name="colorAccent">#028884</color>
 
+    <color name="stfImageColor">#063a35</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FBE41A</color>

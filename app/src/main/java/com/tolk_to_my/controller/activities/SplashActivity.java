@@ -1,7 +1,5 @@
 package com.tolk_to_my.controller.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;

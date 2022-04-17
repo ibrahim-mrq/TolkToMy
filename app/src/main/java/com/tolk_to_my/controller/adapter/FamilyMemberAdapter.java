@@ -1,6 +1,7 @@
 package com.tolk_to_my.controller.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tolk_to_my.R;
+import com.tolk_to_my.controller.activities.FamilyMemberDetailActivity;
 import com.tolk_to_my.databinding.CustomFamilyMemberBinding;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.model.FamilyMember;
@@ -63,11 +65,13 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
         private void bind(FamilyMember model) {
             binding.name.setText(Constants.setText(mContext, R.string.name, model.getName()));
             binding.birthday.setText(Constants.setText(mContext, R.string.birth, model.getBirthday()));
-            binding.disability.setText(Constants.setText(mContext, R.string.disability,"\n"+ model.getDisability()));
+            binding.disability.setText(Constants.setText(mContext, R.string.disability, "\n" + model.getDisability()));
 
-//            binding.name.setText(model.getName());
-//            binding.birthday.setText(model.getBirthday());
-//            binding.disability.setText(model.getDisability());
+            itemView.setOnClickListener(view -> {
+                mContext.startActivity(new Intent(mContext, FamilyMemberDetailActivity.class)
+                        .putExtra(Constants.TYPE_MODEL, model)
+                );
+            });
         }
     }
 

@@ -2,7 +2,9 @@ package com.tolk_to_my.model;
 
 import org.jetbrains.annotations.NotNull;
 
-public class FamilyMember {
+import java.io.Serializable;
+
+public class FamilyMember implements Serializable {
 
     private String name;
     private String id;

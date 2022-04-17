@@ -4,13 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tolk_to_my.R;
 import com.tolk_to_my.databinding.FragmentVideoBinding;
 import com.tolk_to_my.helpers.BaseFragment;
 
@@ -46,6 +44,7 @@ public class VideoFragment extends BaseFragment {
     }
 
     private void initView() {
+        binding.include.statefulLayout.showEmpty();
 
     }
 
