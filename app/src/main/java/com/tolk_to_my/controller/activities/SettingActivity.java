@@ -25,7 +25,7 @@ public class SettingActivity extends BaseActivity {
         binding.appbar.tvTool.setText(getString(R.string.setting));
 
         binding.imgWhatsapp.setOnClickListener(view -> {
-            new Utils().openWhatsApp(this);
+            new Utils().openGoogleDuo(this, "535136193");
         });
         binding.imgCall.setOnClickListener(view -> {
             new Utils().openPhoneCall(this);

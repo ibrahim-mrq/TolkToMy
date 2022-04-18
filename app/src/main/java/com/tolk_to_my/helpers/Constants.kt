@@ -2,13 +2,17 @@
 
 package com.tolk_to_my.helpers
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.google.firebase.auth.FirebaseAuth
 import com.orhanobut.hawk.Hawk
+import com.tapadoo.alerter.Alerter
 import com.tolk_to_my.BuildConfig
 import com.tolk_to_my.R
 import com.tolk_to_my.controller.activities.SplashActivity
@@ -47,7 +51,7 @@ object Constants {
     @JvmStatic
     fun logout(context: Context) {
         Hawk.deleteAll()
-        FirebaseAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut()
         Toast.makeText(context, "تم تسجيل الخروج بنجاح", Toast.LENGTH_SHORT).show()
         context.startActivity(Intent(context, SplashActivity::class.java))
     }
@@ -62,4 +66,20 @@ object Constants {
         return context.getString(string) + context.getString(R.string.colon) + " " + text
     }
 
+    @JvmStatic
+     fun showAlert(
+        activity: Activity,
+        text: String?,
+        @ColorRes color: Int?,
+    ) {
+        Alerter.create(activity)
+            .setTitle("")
+            .setText(text!!)
+            .setBackgroundColorRes(color!!)
+            .setContentGravity(Gravity.CENTER)
+            .enableSwipeToDismiss()
+            .setDuration(2000)
+            .hideIcon()
+            .show()
+    }
 }

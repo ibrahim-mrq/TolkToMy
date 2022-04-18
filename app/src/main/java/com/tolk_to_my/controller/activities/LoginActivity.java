@@ -18,8 +18,6 @@ import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.User;
 
-import java.util.Objects;
-
 public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding binding;
@@ -83,7 +81,6 @@ public class LoginActivity extends BaseActivity {
                         showAlert(this, "", "تم تسجيل الدحول بنجاح");
                         Hawk.put(Constants.IS_LOGIN, true);
                         Hawk.put(Constants.USER, user);
-//                        Hawk.put(Constants.USER_ID, Objects.requireNonNull(auth.getCurrentUser()).getUid());
                         Hawk.put(Constants.USER_TOKEN, user.getToken());
                         new Handler().postDelayed(() -> {
                             enableElements(true);
@@ -112,6 +109,7 @@ public class LoginActivity extends BaseActivity {
         binding.appbar.imgBack.setEnabled(enable);
         binding.etEmail.setEnabled(enable);
         binding.etPassword.setEnabled(enable);
+        binding.tvRegister.setEnabled(enable);
     }
 
     @Override

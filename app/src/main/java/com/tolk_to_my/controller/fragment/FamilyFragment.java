@@ -21,11 +21,13 @@ import com.tolk_to_my.controller.adapter.FamilyMemberAdapter;
 import com.tolk_to_my.databinding.FragmentFamilyBinding;
 import com.tolk_to_my.helpers.BaseFragment;
 import com.tolk_to_my.helpers.Constants;
+import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.FamilyMember;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class FamilyFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -74,27 +76,33 @@ public class FamilyFragment extends BaseFragment implements SwipeRefreshLayout.O
     }
 
     private void loadData() {
-        binding.include.statefulLayout.showLoading();
-        binding.include.swipeToRefresh.setRefreshing(false);
-        db.collection("FamilyMember")
-                .whereEqualTo("parent_token", Hawk.get(Constants.USER_TOKEN))
-                .addSnapshotListener((query, error) -> {
-                    list.clear();
-                    if (query != null) {
-                        for (QueryDocumentSnapshot document : query) {
-                            list.add(document.toObject(FamilyMember.class));
-                        }
-                        if (list.isEmpty()) {
-                            binding.include.statefulLayout.showEmpty();
+        if (NetworkHelper.INSTANCE.isNetworkOnline(requireActivity())) {
+            binding.include.statefulLayout.showLoading();
+            binding.include.swipeToRefresh.setRefreshing(false);
+            db.collection("FamilyMember")
+                    .whereEqualTo("parent_token", Hawk.get(Constants.USER_TOKEN))
+                    .addSnapshotListener((query, error) -> {
+                        list.clear();
+                        if (query != null) {
+                            for (QueryDocumentSnapshot document : query) {
+                                list.add(document.toObject(FamilyMember.class));
+                            }
+                            if (list.isEmpty()) {
+                                binding.include.statefulLayout.showEmpty();
+                            } else {
+                                binding.include.statefulLayout.showContent();
+                            }
+                            adapter.setList(list);
                         } else {
-                            binding.include.statefulLayout.showContent();
+                            binding.include.statefulLayout.showError(
+                                    getString(R.string.empty_data), view -> loadData());
                         }
-                        adapter.setList(list);
-                    } else {
-                        binding.include.statefulLayout.showError(
-                                getString(R.string.empty_data), view -> loadData());
-                    }
-                });
+                    });
+        } else {
+            binding.include.statefulLayout.showOffline(getString(R.string.no_internet), view -> {
+                loadData();
+            });
+        }
     }
 
     @Override

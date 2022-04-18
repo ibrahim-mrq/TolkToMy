@@ -17,6 +17,8 @@ import com.tolk_to_my.R;
 import com.tolk_to_my.controller.adapter.VideoAdapter;
 import com.tolk_to_my.databinding.FragmentVideoBinding;
 import com.tolk_to_my.helpers.BaseFragment;
+import com.tolk_to_my.helpers.Constants;
+import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.Video;
 
 import org.jetbrains.annotations.NotNull;
@@ -66,26 +68,32 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     }
 
     private void loadData() {
-        binding.include.statefulLayout.showLoading();
-        binding.include.swipeToRefresh.setRefreshing(false);
-        db.collection("Video")
-                .addSnapshotListener((query, error) -> {
-                    list.clear();
-                    if (query != null) {
-                        for (QueryDocumentSnapshot document : query) {
-                            list.add(document.toObject(Video.class));
-                        }
-                        if (list.isEmpty()) {
-                            binding.include.statefulLayout.showEmpty();
+        if (NetworkHelper.INSTANCE.isNetworkOnline(requireActivity())) {
+            binding.include.statefulLayout.showLoading();
+            binding.include.swipeToRefresh.setRefreshing(false);
+            db.collection("Video")
+                    .addSnapshotListener((query, error) -> {
+                        list.clear();
+                        if (query != null) {
+                            for (QueryDocumentSnapshot document : query) {
+                                list.add(document.toObject(Video.class));
+                            }
+                            if (list.isEmpty()) {
+                                binding.include.statefulLayout.showEmpty();
+                            } else {
+                                binding.include.statefulLayout.showContent();
+                            }
+                            adapter.setList(list);
                         } else {
-                            binding.include.statefulLayout.showContent();
+                            binding.include.statefulLayout.showError(
+                                    getString(R.string.empty_data), view -> loadData());
                         }
-                        adapter.setList(list);
-                    } else {
-                        binding.include.statefulLayout.showError(
-                                getString(R.string.empty_data), view -> loadData());
-                    }
-                });
+                    });
+        } else {
+            binding.include.statefulLayout.showOffline(getString(R.string.no_internet), view -> {
+                loadData();
+            });
+        }
     }
 
     @Override

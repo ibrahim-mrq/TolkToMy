@@ -23,12 +23,14 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="60dp"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo"
+                app:shapeAppearanceOverlay="@style/circleImageView"
                 tools:ignore="ContentDescription" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -139,7 +141,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_whatsapp"
+                    android:src="@drawable/ic_video_call"
                     tools:ignore="ContentDescription" />
 
                 <ImageView

@@ -24,6 +24,7 @@ import com.tolk_to_my.databinding.ActivityAddFamilyBinding;
 import com.tolk_to_my.databinding.CustomDialogListBinding;
 import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
+import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.FamilyMember;
 import com.tolk_to_my.model.User;
 
@@ -85,7 +86,13 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
                     .show();
         });
 
-        binding.btnSave.setOnClickListener(view -> addFamilyMember());
+        binding.btnSave.setOnClickListener(view -> {
+            if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
+                addFamilyMember();
+            } else {
+                Constants.showAlert(this, getString(R.string.no_internet), R.color.orange);
+            }
+        });
 
     }
 

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tolk_to_my.R;
+import com.tolk_to_my.helpers.Constants;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -53,13 +54,26 @@ public class Utils {
         }
     }
 
+    public void openGoogleDuo(Activity context, String phone) {
+        try {
+            Intent intent = new Intent();
+            intent.setPackage("com.google.android.apps.tachyon");
+            intent.setAction("com.google.android.apps.tachyon.action.CALL");
+            intent.setData(Uri.parse("tel:+966" + phone));
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Constants.showAlert(context, "الرجاء تثبيت تطبيق جوجل دو اولا", R.color.orange);
+            Log.e("response", "ERROR Google Duo = " + e.toString());
+        }
+    }
+
     public void openPhoneCall(Activity context) {
         try {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:0592440530"));
             context.startActivity(intent);
         } catch (Exception e) {
-            Log.e("response", "ERROR WHATSAPP = " + e.toString());
+            Log.e("response", "ERROR Phone Call = " + e.toString());
         }
     }
 
@@ -68,10 +82,11 @@ public class Utils {
             String number = "0592440530";
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)));
         } catch (Exception e) {
-            Log.e("response", "ERROR WHATSAPP = " + e.toString());
+            Log.e("response", "ERROR Phone Message = " + e.toString());
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void toast(Activity context) {
         LayoutInflater inflater = context.getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, context.findViewById(R.id.toast_layout_root));
