@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reviews"
+        android:icon="@drawable/ic_diagnostics"
+        android:title="@string/reviews" />
+    <item
+        android:id="@+id/review_request"
+        android:icon="@drawable/ic_reviewers"
+        android:title="@string/review_request" />
+    <item
+        android:id="@+id/vital_signs"
+        android:icon="@drawable/ic_vital_signs"
+        android:title="@string/vital_signs" />
+
+</menu>

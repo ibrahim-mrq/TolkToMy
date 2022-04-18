@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:theme="@style/MaterialTheme"
-    tools:context=".controller.activities.FamilyMemberDetailActivity">
+    tools:context=".controller.activities.FamilyDetailActivity">
 
     <include
         android:id="@+id/appbar"

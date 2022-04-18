@@ -54,7 +54,7 @@
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".controller.activities.FamilyMemberDetailActivity"
+            android:name=".controller.activities.FamilyDetailActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name=".controller.activities.VideoActivity"

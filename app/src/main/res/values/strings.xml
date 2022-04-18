@@ -61,5 +61,8 @@
     <string name="must_add_one_disability">يجب عليك إضافة مرض واحدة على الأقل</string>
     <string name="family_detail">تفاصيل فرد العائلة</string>
     <string name="communication">طريقة التواصل</string>
+    <string name="reviews">المراجعين</string>
+    <string name="review_request">طلبات المراجعة</string>
+    <string name="vital_signs">العلامات الحيوية</string>
 
 </resources>

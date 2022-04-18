@@ -18,6 +18,6 @@
         android:layout_height="match_parent"
         app:autoPlay="true"
         app:showFullScreenButton="false"
-        app:videoId="S0Q4gqBUs7c" />
+        app:videoId="" />
 
 </LinearLayout>

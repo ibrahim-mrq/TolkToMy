@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tolk_to_my.R;
-import com.tolk_to_my.controller.activities.FamilyMemberDetailActivity;
+import com.tolk_to_my.controller.activities.FamilyDetailActivity;
 import com.tolk_to_my.databinding.CustomFamilyMemberBinding;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.model.FamilyMember;
@@ -69,7 +69,7 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
             binding.disability.setText(Constants.setText(mContext, R.string.disability, "\n" + model.getDisability()));
 
             itemView.setOnClickListener(view -> {
-                mContext.startActivity(new Intent(mContext, FamilyMemberDetailActivity.class)
+                mContext.startActivity(new Intent(mContext, FamilyDetailActivity.class)
                         .putExtra(Constants.TYPE_MODEL, model)
                 );
             });

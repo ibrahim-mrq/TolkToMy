@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.tolk_to_my.R;
-import com.tolk_to_my.databinding.ActivityFamilyMemberDetailBinding;
+import com.tolk_to_my.databinding.ActivityFamilyDetailBinding;
 import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
@@ -20,9 +20,9 @@ import com.tolk_to_my.model.User;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class FamilyMemberDetailActivity extends BaseActivity {
+public class FamilyDetailActivity extends BaseActivity {
 
-    ActivityFamilyMemberDetailBinding binding;
+    ActivityFamilyDetailBinding binding;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FamilyMember model;
 
@@ -34,7 +34,7 @@ public class FamilyMemberDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityFamilyMemberDetailBinding.inflate(getLayoutInflater());
+        binding = ActivityFamilyDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initView();
     }

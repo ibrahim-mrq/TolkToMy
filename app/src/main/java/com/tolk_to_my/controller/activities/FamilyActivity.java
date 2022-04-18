@@ -41,7 +41,7 @@ public class FamilyActivity extends BaseActivity {
     private void bottomNavigation() {
         replaceFragment(FamilyFragment.newInstance(), R.string.family);
         binding.main.bottomNavigation.getMenu().clear();
-        binding.main.bottomNavigation.inflateMenu(R.menu.menu_bottom_family);
+        binding.main.bottomNavigation.inflateMenu(R.menu.menu_bottom_customer);
         binding.main.bottomNavigation.setSelectedItemId(R.id.home);
         binding.main.bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -87,7 +87,6 @@ public class FamilyActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     private Toast backToasty;
     private long backPressedTime;

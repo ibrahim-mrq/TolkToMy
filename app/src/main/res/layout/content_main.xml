@@ -35,6 +35,6 @@
         app:itemRippleColor="@color/white"
         app:itemTextColor="@drawable/shape_bottom_nav"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom" />
+        app:menu="@menu/menu_bottom_vendor" />
 
 </RelativeLayout>
