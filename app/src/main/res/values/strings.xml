@@ -48,6 +48,7 @@
     <string name="family">افراد الاسرة</string>
     <string name="age">العمر</string>
     <string name="disability">نوع الاعاقة</string>
+    <string name="select_disability">اختر نوع الاعاقة</string>
     <string name="doctor">الطبيب المعالج</string>
     <string name="open_file">فتح ملف</string>
 
@@ -59,5 +60,6 @@
 
     <string name="must_add_one_disability">يجب عليك إضافة مرض واحدة على الأقل</string>
     <string name="family_detail">تفاصيل فرد العائلة</string>
+    <string name="communication">طريقة التواصل</string>
 
 </resources>

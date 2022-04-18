@@ -188,108 +188,193 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/text" />
 
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:id="@+id/tv_gender_doctor"-->
-            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginHorizontal="30dp"-->
-            <!--                android:layout_marginTop="10dp"-->
-            <!--                android:fontFamily="@font/font_regular"-->
-            <!--                android:hint="@string/gender_doctor"-->
-            <!--                app:boxStrokeColor="@color/colorAccent"-->
-            <!--                app:hintAnimationEnabled="true"-->
-            <!--                app:hintEnabled="true"-->
-            <!--                app:hintTextColor="@color/colorAccent">-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_select_disability"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/select_disability"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
 
-            <!--                <AutoCompleteTextView-->
-            <!--                    android:id="@+id/et_gender_doctor"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:clickable="true"-->
-            <!--                    android:cursorVisible="false"-->
-            <!--                    android:focusable="false"-->
-            <!--                    android:fontFamily="@font/font_regular"-->
-            <!--                    android:inputType="textAutoComplete"-->
-            <!--                    android:longClickable="false"-->
-            <!--                    android:textAlignment="textStart"-->
-            <!--                    android:textColor="@color/colorAccent"-->
-            <!--                    android:textStyle="bold"-->
-            <!--                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />-->
+                <AutoCompleteTextView
+                    android:id="@+id/et_select_disability"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:id="@+id/tv_doctor"-->
-            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginHorizontal="30dp"-->
-            <!--                android:layout_marginTop="10dp"-->
-            <!--                android:enabled="false"-->
-            <!--                android:fontFamily="@font/font_regular"-->
-            <!--                android:hint="@string/doctor"-->
-            <!--                app:boxStrokeColor="@color/colorAccent"-->
-            <!--                app:hintAnimationEnabled="true"-->
-            <!--                app:hintEnabled="true"-->
-            <!--                app:hintTextColor="@color/colorAccent">-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_gender_doctor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/gender_doctor"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
 
-            <!--                <AutoCompleteTextView-->
-            <!--                    android:id="@+id/et_doctor"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:clickable="true"-->
-            <!--                    android:cursorVisible="false"-->
-            <!--                    android:focusable="false"-->
-            <!--                    android:fontFamily="@font/font_regular"-->
-            <!--                    android:inputType="textAutoComplete"-->
-            <!--                    android:longClickable="false"-->
-            <!--                    android:textAlignment="textStart"-->
-            <!--                    android:textColor="@color/colorAccent"-->
-            <!--                    android:textStyle="bold"-->
-            <!--                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />-->
+                <AutoCompleteTextView
+                    android:id="@+id/et_gender_doctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginHorizontal="30dp"-->
-            <!--                android:layout_marginTop="15dp"-->
-            <!--                android:layout_marginBottom="40dp">-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_doctor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/doctor"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
 
-            <!--                <androidx.appcompat.widget.AppCompatButton-->
-            <!--                    android:id="@+id/btn_save"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:background="@drawable/shape_accent"-->
-            <!--                    android:foreground="?attr/selectableItemBackground"-->
-            <!--                    android:text="@string/send_order"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/white"-->
-            <!--                    android:textStyle="bold"-->
-            <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                    app:layout_constraintStart_toStartOf="parent"-->
-            <!--                    app:layout_constraintTop_toTopOf="parent"-->
-            <!--                    tools:ignore="UnusedAttribute" />-->
+                <AutoCompleteTextView
+                    android:id="@+id/et_doctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
 
-            <!--                <com.github.ybq.android.spinkit.SpinKitView-->
-            <!--                    android:id="@+id/progressBar"-->
-            <!--                    style="@style/SpinKitView.FadingCircle"-->
-            <!--                    android:layout_width="30dp"-->
-            <!--                    android:layout_height="30dp"-->
-            <!--                    android:layout_gravity="center"-->
-            <!--                    android:layout_marginHorizontal="8dp"-->
-            <!--                    android:translationZ="90dp"-->
-            <!--                    android:visibility="invisible"-->
-            <!--                    app:SpinKit_Color="@color/colorAccent"-->
-            <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_communication"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/communication"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_communication"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textAutoComplete"
+                    android:longClickable="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="KeyboardInaccessibleWidget,LabelFor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_accent"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/send_order"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnusedAttribute" />
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/progressBar"
+                    style="@style/SpinKitView.FadingCircle"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="8dp"
+                    android:translationZ="90dp"
+                    android:visibility="invisible"
+                    app:SpinKit_Color="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_waite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@font/font_regular"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="تم ارسال طلب للدكتور ، بانتظار الموافقة ..."
+                android:textAllCaps="false"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
 
         </LinearLayout>
 
