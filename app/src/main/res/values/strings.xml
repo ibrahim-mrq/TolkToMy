@@ -57,4 +57,7 @@
     <string name="colon">:</string>
     <string name="send_order">ارسال طلب</string>
 
+    <string name="must_add_one_disability">يجب عليك إضافة مرض واحدة على الأقل</string>
+    <string name="family_detail">تفاصيل فرد العائلة</string>
+
 </resources>

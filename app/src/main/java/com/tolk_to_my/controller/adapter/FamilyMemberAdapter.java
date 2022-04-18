@@ -63,6 +63,7 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
         }
 
         private void bind(FamilyMember model) {
+
             binding.name.setText(Constants.setText(mContext, R.string.name, model.getName()));
             binding.birthday.setText(Constants.setText(mContext, R.string.birth, model.getBirthday()));
             binding.disability.setText(Constants.setText(mContext, R.string.disability, "\n" + model.getDisability()));
@@ -72,6 +73,7 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
                         .putExtra(Constants.TYPE_MODEL, model)
                 );
             });
+
         }
     }
 

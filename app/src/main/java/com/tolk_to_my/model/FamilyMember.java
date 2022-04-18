@@ -3,6 +3,7 @@ package com.tolk_to_my.model;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class FamilyMember implements Serializable {
 
@@ -12,9 +13,6 @@ public class FamilyMember implements Serializable {
     private String birthday;
     private String gender;
     private String disability;
-    private String gender_doctor;
-    private String doctor;
-    private String doctor_token;
     private String parent_token;
     private String token;
 
@@ -31,9 +29,6 @@ public class FamilyMember implements Serializable {
                 ", birthday='" + birthday + '\'' +
                 ", gender='" + gender + '\'' +
                 ", disability='" + disability + '\'' +
-                ", gender_doctor='" + gender_doctor + '\'' +
-                ", doctor='" + doctor + '\'' +
-                ", doctor_token='" + doctor_token + '\'' +
                 ", parent_token='" + parent_token + '\'' +
                 ", token='" + token + '\'' +
                 '}';
@@ -85,30 +80,6 @@ public class FamilyMember implements Serializable {
 
     public void setDisability(String disability) {
         this.disability = disability;
-    }
-
-    public String getGender_doctor() {
-        return gender_doctor;
-    }
-
-    public void setGender_doctor(String gender_doctor) {
-        this.gender_doctor = gender_doctor;
-    }
-
-    public String getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
-    }
-
-    public String getDoctor_token() {
-        return doctor_token;
-    }
-
-    public void setDoctor_token(String doctor_token) {
-        this.doctor_token = doctor_token;
     }
 
     public String getParent_token() {

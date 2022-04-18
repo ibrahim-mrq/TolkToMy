@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -97,7 +98,7 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
         binding.etGender.setAdapter(gendersAdapter);
 
         disability.add("تخاطب");
-        disability.add("اضطرابات نفسبه");
+        disability.add("اضطرابات نفسيه");
         disability.add("اضطرابات سلوكيه");
         disability.add("التوحد");
         disability.add("متلازم الدون");
@@ -169,21 +170,28 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
                 && isNotEmpty(binding.etAge, binding.tvAge)
                 && isNotEmpty(binding.etBirth, binding.tvBirth)
                 && isNotEmpty(binding.etGender, binding.tvGender)
-                && isNotEmpty(binding.etDisability, binding.tvDisability)
+                && isListNotEmpty(localListDisability, binding.tvDisability)
         ) {
-            enableElements(false);
+
+            StringBuilder disability = new StringBuilder();
+            for (int i = 0; i < localListDisability.size(); i++) {
+                disability.append("، ").append(localListDisability.get(i));
+            }
+            String aa = String.valueOf(disability.charAt(0));
+            if (aa.equals("،"))
+                disability.replace(0, 1, "");
+
             FamilyMember model = new FamilyMember();
             model.setAge(getText(binding.etAge));
             model.setBirthday(getText(binding.etBirth));
-            model.setDisability(getText(binding.etDisability));
-            model.setDoctor("");
+            model.setDisability(disability.toString().trim());
             model.setGender(getText(binding.etGender));
-            model.setGender_doctor("");
             model.setId(getText(binding.etId));
             model.setName(getText(binding.etName));
-            model.setDoctor_token(doctorToken);
             model.setParent_token(Hawk.get(Constants.USER_TOKEN));
             model.setToken("");
+
+            enableElements(false);
             db.collection("FamilyMember")
                     .add(model)
                     .addOnSuccessListener(response -> {
@@ -195,6 +203,10 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
                             enableElements(true);
                             onBackPressed();
                         }, 2000);
+                    })
+                    .addOnFailureListener(e -> {
+                        showAlert(this, "", "هناك خطا ما !");
+                        enableElements(true);
                     });
         }
     }

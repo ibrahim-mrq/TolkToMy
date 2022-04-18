@@ -67,7 +67,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             binding.title.setText(model.getTitle());
 
             String videoId = model.getUrl().substring(model.getUrl().indexOf("=") + 1);
-            Picasso.get().load("https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg")
+            Picasso.get()
+                    .load("https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg")
+                    .error(R.drawable.logo)
+                    .placeholder(R.drawable.logo)
                     .into(binding.imageView);
 
             itemView.setOnClickListener(view -> {

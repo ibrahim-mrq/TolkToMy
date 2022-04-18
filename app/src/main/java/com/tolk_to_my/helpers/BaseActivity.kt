@@ -224,4 +224,19 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun isListNotEmpty(
+        list: ArrayList<String>,
+        textInputLayout: TextInputLayout
+    ): Boolean {
+
+        return if (list.isEmpty()) {
+            textInputLayout.isErrorEnabled = true
+            textInputLayout.error = getString(R.string.must_add_one_disability)
+            false
+        } else {
+            textInputLayout.isErrorEnabled = false
+            true
+        }
+    }
+
 }

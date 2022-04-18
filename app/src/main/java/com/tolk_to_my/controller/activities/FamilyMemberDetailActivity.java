@@ -24,7 +24,7 @@ public class FamilyMemberDetailActivity extends BaseActivity {
     private void initView() {
         model = (FamilyMember) getIntent().getSerializableExtra(Constants.TYPE_MODEL);
 
-        binding.appbar.tvTool.setText(getString(R.string.add_family));
+        binding.appbar.tvTool.setText(getString(R.string.family_detail));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 
         binding.etAge.setText(model.getAge());
