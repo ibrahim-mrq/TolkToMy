@@ -64,5 +64,18 @@
     <string name="reviews">المراجعين</string>
     <string name="review_request">طلبات المراجعة</string>
     <string name="vital_signs">العلامات الحيوية</string>
+    <string name="patient">مريض</string>
+    <string name="neww">جديد</string>
+    <string name="old">قديم</string>
+    <string name="sugar">السكر</string>
+    <string name="pressure">الضغط</string>
+    <string name="heart">نبض القلب</string>
+    <string name="weight">الوزن</string>
+    <string name="height">الطول</string>
+    <string name="temperature">درجة الحرارة</string>
+
+    <string name="update">تحديث</string>
+    <string name="add">اضافة</string>
+    <string name="add_vital_signs">اضف العلامات الحيوية للمريض</string>
 
 </resources>

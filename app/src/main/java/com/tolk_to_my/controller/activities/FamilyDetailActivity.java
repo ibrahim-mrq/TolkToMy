@@ -145,6 +145,9 @@ public class FamilyDetailActivity extends BaseActivity {
             order.setDoctorToken(doctorToken);
             order.setParentToken(model.getParent_token());
             order.setPatientToken(model.getToken());
+            order.setPatientBirthday(model.getBirthday());
+            order.setPatientName(model.getName());
+            order.setPatientId(model.getId());
             order.setToken("");
 
             enableElements(false);

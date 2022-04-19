@@ -9,9 +9,5 @@
         android:id="@+id/review_request"
         android:icon="@drawable/ic_reviewers"
         android:title="@string/review_request" />
-    <item
-        android:id="@+id/vital_signs"
-        android:icon="@drawable/ic_vital_signs"
-        android:title="@string/vital_signs" />
 
 </menu>

@@ -15,40 +15,40 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
-import com.tolk_to_my.controller.adapter.FamilyMemberAdapter;
-import com.tolk_to_my.databinding.FragmentReviewBinding;
+import com.tolk_to_my.controller.adapter.PatientAdapter;
+import com.tolk_to_my.databinding.FragmentPatientBinding;
 import com.tolk_to_my.helpers.BaseFragment;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
-import com.tolk_to_my.model.FamilyMember;
+import com.tolk_to_my.model.Patient;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class ReviewFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class PatientFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    public ReviewFragment() {
+    public PatientFragment() {
         // Required empty public constructor
     }
 
-    public static ReviewFragment newInstance() {
-        ReviewFragment fragment = new ReviewFragment();
+    public static PatientFragment newInstance() {
+        PatientFragment fragment = new PatientFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
 
-    FragmentReviewBinding binding;
-    FamilyMemberAdapter adapter;
-    ArrayList<FamilyMember> list = new ArrayList<>();
+    FragmentPatientBinding binding;
+    PatientAdapter adapter;
+    ArrayList<Patient> list = new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentReviewBinding.inflate(getLayoutInflater());
+        binding = FragmentPatientBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
 
@@ -62,7 +62,7 @@ public class ReviewFragment extends BaseFragment implements SwipeRefreshLayout.O
         binding.include.swipeToRefresh.setOnRefreshListener(this);
         binding.include.swipeToRefresh.setRefreshing(false);
 
-        adapter = new FamilyMemberAdapter(getActivity());
+        adapter = new PatientAdapter(getActivity());
         binding.include.recyclerView.setAdapter(adapter);
         binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.include.recyclerView.setHasFixedSize(true);
@@ -74,13 +74,13 @@ public class ReviewFragment extends BaseFragment implements SwipeRefreshLayout.O
         if (NetworkHelper.INSTANCE.isNetworkOnline(requireActivity())) {
             binding.include.statefulLayout.showLoading();
             binding.include.swipeToRefresh.setRefreshing(false);
-            db.collection("FamilyMember")
-                    .whereEqualTo("parent_token", Hawk.get(Constants.USER_TOKEN))
+            db.collection("Patient")
+                    .whereEqualTo("doctorToken", Hawk.get(Constants.USER_TOKEN))
                     .addSnapshotListener((query, error) -> {
                         list.clear();
                         if (query != null) {
                             for (QueryDocumentSnapshot document : query) {
-                                list.add(document.toObject(FamilyMember.class));
+                                list.add(document.toObject(Patient.class));
                             }
                             if (list.isEmpty()) {
                                 binding.include.statefulLayout.showEmpty();

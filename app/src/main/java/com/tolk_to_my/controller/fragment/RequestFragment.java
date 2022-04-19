@@ -27,7 +27,6 @@ import com.tolk_to_my.model.Request;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -69,12 +68,12 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
         adapter.setRequestInterface(new RequestInterface() {
             @Override
             public void accept(Request model, int position) {
-                acceptOrder();
+                acceptOrder(model, position);
             }
 
             @Override
             public void delete(Request model, int position) {
-
+                deleteOrder(model, position);
             }
         });
         binding.include.recyclerView.setAdapter(adapter);
@@ -114,23 +113,57 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
         }
     }
 
-    private void acceptOrder() {
+    private void acceptOrder(Request model, int position) {
         if (NetworkHelper.INSTANCE.isNetworkOnline(requireActivity())) {
-            Patient order = new Patient();
+            Patient patient = new Patient();
+            patient.setCommunicationType(model.getCommunicationType());
+            patient.setDisability(model.getDisability());
+            patient.setDoctorGender(model.getDoctorGender());
+            patient.setDoctorName(model.getDoctorName());
+            patient.setDoctorToken(model.getDoctorToken());
+            patient.setFirstTime(true);
+            patient.setParentToken(model.getParentToken());
+            patient.setPatientBirthday(model.getPatientBirthday());
+            patient.setPatientName(model.getPatientName());
+            patient.setPatientId(model.getPatientId());
+            patient.setPatientId(model.getPatientId());
+            patient.setPatientToken(model.getPatientToken());
 
-//            enableElements(false);
-//            db.collection("Patient")
-//                    .add(order)
-//                    .addOnSuccessListener(document -> {
-//                        document.update("token", document.getId());
-//                        enableElements(true);
-//                        enableSendElements(false);
-//                        showAlert("", "تم ارسال الطلب للدكتور المعالج");
-//                    });
+            patient.setToken("");
+
+            showCustomProgress(false);
+            db.collection("Patient")
+                    .add(patient)
+                    .addOnSuccessListener(document -> {
+                        db.collection("Request").document(model.getToken()).delete();
+                        document.update("token", document.getId());
+                        dismissCustomProgress();
+                        list.remove(position);
+                        adapter.setList(list);
+                        showAlert("", "تم قبول المريض");
+                    });
         } else {
             Constants.showAlert(requireActivity(), getString(R.string.no_internet), R.color.orange);
         }
     }
+
+    private void deleteOrder(Request model, int position) {
+        if (NetworkHelper.INSTANCE.isNetworkOnline(requireActivity())) {
+            showCustomProgress(false);
+            db.collection("Request")
+                    .document(model.getToken())
+                    .delete()
+                    .addOnSuccessListener(unused -> {
+                        dismissCustomProgress();
+                        list.remove(position);
+                        adapter.setList(list);
+                        showOfflineAlert("", "تم رفض المريض");
+                    });
+        } else {
+            Constants.showAlert(requireActivity(), getString(R.string.no_internet), R.color.orange);
+        }
+    }
+
 
     @Override
     public void onRefresh() {

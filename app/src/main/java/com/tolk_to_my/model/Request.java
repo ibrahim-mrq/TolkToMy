@@ -8,12 +8,13 @@ public class Request implements Serializable {
 
     private String patientName;
     private String patientBirthday;
+    private String patientId;
+    private String patientToken;
     private String disability;
     private String doctorGender;
     private String doctorName;
     private String doctorToken;
     private String parentToken;
-    private String patientToken;
     private String communicationType;
     private String token;
 
@@ -25,13 +26,14 @@ public class Request implements Serializable {
     public String toString() {
         return "Order{" +
                 "patientName='" + patientName + '\'' +
-                "patientBirthday='" + patientBirthday + '\'' +
-                "disability='" + disability + '\'' +
+                ", patientBirthday='" + patientBirthday + '\'' +
+                ", patientId='" + patientId + '\'' +
+                ", patientToken='" + patientToken + '\'' +
+                ", disability='" + disability + '\'' +
                 ", doctorGender='" + doctorGender + '\'' +
                 ", doctorName='" + doctorName + '\'' +
                 ", doctorToken='" + doctorToken + '\'' +
                 ", parentToken='" + parentToken + '\'' +
-                ", patientToken='" + patientToken + '\'' +
                 ", communicationType='" + communicationType + '\'' +
                 ", token='" + token + '\'' +
                 '}';
@@ -51,6 +53,14 @@ public class Request implements Serializable {
 
     public void setPatientBirthday(String patientBirthday) {
         this.patientBirthday = patientBirthday;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
     public String getDisability() {

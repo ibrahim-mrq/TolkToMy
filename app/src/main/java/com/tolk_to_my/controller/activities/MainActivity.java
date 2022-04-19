@@ -13,9 +13,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.tolk_to_my.R;
-import com.tolk_to_my.controller.fragment.ReviewFragment;
+import com.tolk_to_my.controller.fragment.PatientFragment;
 import com.tolk_to_my.controller.fragment.RequestFragment;
-import com.tolk_to_my.controller.fragment.VideoFragment;
 import com.tolk_to_my.databinding.ActivityMainBinding;
 import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
@@ -40,20 +39,17 @@ public class MainActivity extends BaseActivity {
 
     @SuppressLint("NonConstantResourceId")
     private void bottomNavigation() {
-        replaceFragment(ReviewFragment.newInstance(), R.string.reviews);
+        replaceFragment(PatientFragment.newInstance(), R.string.reviews);
         binding.main.bottomNavigation.getMenu().clear();
         binding.main.bottomNavigation.inflateMenu(R.menu.menu_bottom_vendor);
         binding.main.bottomNavigation.setSelectedItemId(R.id.home);
         binding.main.bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.reviews:
-                    replaceFragment(ReviewFragment.newInstance(), R.string.reviews);
+                    replaceFragment(PatientFragment.newInstance(), R.string.reviews);
                     return true;
                 case R.id.review_request:
                     replaceFragment(RequestFragment.newInstance(), R.string.review_request);
-                    return true;
-                case R.id.vital_signs:
-                    replaceFragment(VideoFragment.newInstance(), R.string.vital_signs);
                     return true;
             }
             return false;
