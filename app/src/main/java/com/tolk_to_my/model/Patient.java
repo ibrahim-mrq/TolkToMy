@@ -4,8 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class Patient implements Serializable {
 
+    private String patientName;
+    private String patientBirthday;
     private String disability;
     private String doctorGender;
     private String doctorName;
@@ -15,13 +17,15 @@ public class Order implements Serializable {
     private String communicationType;
     private String token;
 
-    public Order() {
+    public Patient() {
     }
 
     @NotNull
     @Override
     public String toString() {
         return "Order{" +
+                "patientName='" + patientName + '\'' +
+                "patientBirthday='" + patientBirthday + '\'' +
                 "disability='" + disability + '\'' +
                 ", doctorGender='" + doctorGender + '\'' +
                 ", doctorName='" + doctorName + '\'' +
@@ -31,6 +35,22 @@ public class Order implements Serializable {
                 ", communicationType='" + communicationType + '\'' +
                 ", token='" + token + '\'' +
                 '}';
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public String getPatientBirthday() {
+        return patientBirthday;
+    }
+
+    public void setPatientBirthday(String patientBirthday) {
+        this.patientBirthday = patientBirthday;
     }
 
     public String getDisability() {

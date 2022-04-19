@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.tolk_to_my.R;
 import com.tolk_to_my.controller.fragment.ReviewFragment;
-import com.tolk_to_my.controller.fragment.ReviewRequestFragment;
+import com.tolk_to_my.controller.fragment.RequestFragment;
 import com.tolk_to_my.controller.fragment.VideoFragment;
 import com.tolk_to_my.databinding.ActivityMainBinding;
 import com.tolk_to_my.helpers.BaseActivity;
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
                     replaceFragment(ReviewFragment.newInstance(), R.string.reviews);
                     return true;
                 case R.id.review_request:
-                    replaceFragment(ReviewRequestFragment.newInstance(), R.string.review_request);
+                    replaceFragment(RequestFragment.newInstance(), R.string.review_request);
                     return true;
                 case R.id.vital_signs:
                     replaceFragment(VideoFragment.newInstance(), R.string.vital_signs);

@@ -14,7 +14,7 @@ import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.FamilyMember;
-import com.tolk_to_my.model.Order;
+import com.tolk_to_my.model.Request;
 import com.tolk_to_my.model.User;
 
 import java.util.ArrayList;
@@ -137,7 +137,7 @@ public class FamilyDetailActivity extends BaseActivity {
 
     private void sendOrder() {
         if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
-            Order order = new Order();
+            Request order = new Request();
             order.setCommunicationType(getText(binding.etCommunication));
             order.setDisability(getText(binding.etSelectDisability));
             order.setDoctorGender(getText(binding.etGenderDoctor));
@@ -148,7 +148,7 @@ public class FamilyDetailActivity extends BaseActivity {
             order.setToken("");
 
             enableElements(false);
-            db.collection("Order")
+            db.collection("Request")
                     .add(order)
                     .addOnSuccessListener(document -> {
                         document.update("token", document.getId());
@@ -162,7 +162,7 @@ public class FamilyDetailActivity extends BaseActivity {
     }
 
     private void loadOrder() {
-        db.collection("Order")
+        db.collection("Request")
                 .whereEqualTo("patientToken", model.getToken())
                 .addSnapshotListener((value, error) -> {
                     enableSendElements(Objects.requireNonNull(value).isEmpty());
