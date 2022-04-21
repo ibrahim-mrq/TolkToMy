@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
@@ -139,9 +138,7 @@ public class AddFamilyActivity extends BaseActivity implements DatePickerDialog.
                     .add(model)
                     .addOnSuccessListener(response -> {
                         showAlert(this, "", "تم اضافة فرد جديد على العائلة");
-                        DocumentReference reference = db.collection("FamilyMember")
-                                .document(response.getId());
-                        reference.update("token", response.getId());
+                        response.update("token", response.getId());
                         new Handler().postDelayed(() -> {
                             enableElements(true);
                             onBackPressed();

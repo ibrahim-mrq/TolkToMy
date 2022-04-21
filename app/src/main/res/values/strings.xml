@@ -76,6 +76,14 @@
 
     <string name="update">تحديث</string>
     <string name="add">اضافة</string>
-    <string name="add_vital_signs">اضف العلامات الحيوية للمريض</string>
+    <string name="add_treatment_history">اضف ملاحظات الجلسة العلاجية للمريض</string>
+    <string name="save">حفظ</string>
+    <string name="treatment_history">الجلسات العلاجية للمريض</string>
+    <string name="show_treatment_history">مشاهدة تاريخ الجلسات العلاجية للمريض</string>
+    <string name="date_treatment_history">تاريخ الجلسات العلاجية للمريض</string>
+    <string name="notes">ملاحظات</string>
+    <string name="tips">نصائح</string>
+    <string name="treatment">العلاج</string>
+    <string name="create_data">تاريخ المراجعة</string>
 
 </resources>

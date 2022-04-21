@@ -4,9 +4,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
-public class Patient implements Serializable {
+public class TreatmentHistory implements Serializable {
 
-    private boolean isFirstTime = true;
+    private String sugar = "";
+    private String pressure = "";
+    private String heart = "";
+    private String weight = "";
+    private String height = "";
+    private String temperature = "";
+
+    private String notes = "";
+    private String tips = "";
+    private String treatment = "";
 
     private String patientName = "";
     private String patientBirthday = "";
@@ -19,18 +28,26 @@ public class Patient implements Serializable {
     private String doctorName = "";
     private String doctorToken = "";
 
+    private String createData = "";
     private String parentToken = "";
-    private String communicationType = "";
     private String token = "";
 
-    public Patient() {
+    public TreatmentHistory() {
     }
 
     @NotNull
     @Override
     public String toString() {
         return "Patient{" +
-                "isFirstTime=" + isFirstTime +
+                ", sugar='" + sugar + '\'' +
+                ", pressure='" + pressure + '\'' +
+                ", heart='" + heart + '\'' +
+                ", weight='" + weight + '\'' +
+                ", height='" + height + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", notes='" + notes + '\'' +
+                ", tips='" + tips + '\'' +
+                ", treatment='" + treatment + '\'' +
                 ", patientName='" + patientName + '\'' +
                 ", patientBirthday='" + patientBirthday + '\'' +
                 ", patientId='" + patientId + '\'' +
@@ -39,18 +56,82 @@ public class Patient implements Serializable {
                 ", doctorGender='" + doctorGender + '\'' +
                 ", doctorName='" + doctorName + '\'' +
                 ", doctorToken='" + doctorToken + '\'' +
+                ", createData='" + createData + '\'' +
                 ", parentToken='" + parentToken + '\'' +
-                ", communicationType='" + communicationType + '\'' +
                 ", token='" + token + '\'' +
                 '}';
     }
 
-    public boolean isFirstTime() {
-        return isFirstTime;
+    public String getSugar() {
+        return sugar;
     }
 
-    public void setFirstTime(boolean firstTime) {
-        isFirstTime = firstTime;
+    public void setSugar(String sugar) {
+        this.sugar = sugar;
+    }
+
+    public String getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(String pressure) {
+        this.pressure = pressure;
+    }
+
+    public String getHeart() {
+        return heart;
+    }
+
+    public void setHeart(String heart) {
+        this.heart = heart;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getTips() {
+        return tips;
+    }
+
+    public void setTips(String tips) {
+        this.tips = tips;
+    }
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
     }
 
     public String getPatientName() {
@@ -117,20 +198,20 @@ public class Patient implements Serializable {
         this.doctorToken = doctorToken;
     }
 
+    public String getCreateData() {
+        return createData;
+    }
+
+    public void setCreateData(String createData) {
+        this.createData = createData;
+    }
+
     public String getParentToken() {
         return parentToken;
     }
 
     public void setParentToken(String parentToken) {
         this.parentToken = parentToken;
-    }
-
-    public String getCommunicationType() {
-        return communicationType;
-    }
-
-    public void setCommunicationType(String communicationType) {
-        this.communicationType = communicationType;
     }
 
     public String getToken() {

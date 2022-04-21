@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tolk_to_my.R;
 import com.tolk_to_my.controller.activities.PatientDetailActivity;
-import com.tolk_to_my.controller.activities.VitalSignsActivity;
 import com.tolk_to_my.databinding.CustomPatientBinding;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.model.Patient;
@@ -79,13 +78,8 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientA
             }
 
             itemView.setOnClickListener(view -> {
-                if (model.isFirstTime()) {
-                    mContext.startActivity(new Intent(mContext, VitalSignsActivity.class)
-                            .putExtra(Constants.TYPE_MODEL, model));
-                } else {
-                    mContext.startActivity(new Intent(mContext, PatientDetailActivity.class)
-                            .putExtra(Constants.TYPE_MODEL, model));
-                }
+                mContext.startActivity(new Intent(mContext, PatientDetailActivity.class)
+                        .putExtra(Constants.TYPE_MODEL, model));
             });
 
         }

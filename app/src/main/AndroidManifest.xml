@@ -17,8 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".controller.activities.PatientDetailActivity"></activity>
-        <activity android:name=".controller.activities.VitalSignsActivity" />
+
         <activity
             android:name=".controller.activities.SplashActivity"
             android:exported="true">
@@ -60,6 +59,12 @@
         <activity
             android:name=".controller.activities.VideoActivity"
             android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".controller.activities.PatientDetailActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".controller.activities.TreatmentHistoryActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
     </application>
 

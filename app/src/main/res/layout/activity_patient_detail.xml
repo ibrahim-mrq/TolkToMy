@@ -40,7 +40,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/font_regular"
                 android:gravity="center"
-                android:text="@string/add_vital_signs"
+                android:text="@string/add_treatment_history"
                 android:textAllCaps="false"
                 android:textColor="@color/text"
                 android:textSize="18sp"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/font_regular"
                 android:hint="@string/name"
                 app:boxStrokeColor="@color/colorAccent"
@@ -64,8 +64,8 @@
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/font_regular"
                     android:enabled="false"
+                    android:fontFamily="@font/font_regular"
                     android:inputType="textPersonName"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorAccent"
@@ -92,10 +92,10 @@
                     android:id="@+id/et_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:enabled="false"
                     android:fontFamily="@font/font_regular"
                     android:inputType="number"
                     android:textAlignment="textStart"
-                    android:enabled="false"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
                     tools:ignore="RtlSymmetry" />
@@ -156,7 +156,6 @@
                         android:id="@+id/et_sugar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
                         android:fontFamily="@font/font_regular"
                         android:inputType="number"
                         android:maxLength="3"
@@ -185,7 +184,6 @@
                         android:id="@+id/et_pressure"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
                         android:fontFamily="@font/font_regular"
                         android:inputType="number"
                         android:maxLength="3"
@@ -224,7 +222,6 @@
                         android:id="@+id/et_heart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
                         android:fontFamily="@font/font_regular"
                         android:inputType="number"
                         android:maxLength="3"
@@ -253,7 +250,6 @@
                         android:id="@+id/et_temperature"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
                         android:fontFamily="@font/font_regular"
                         android:inputType="number"
                         android:maxLength="2"
@@ -292,7 +288,6 @@
                         android:id="@+id/et_weight"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
                         android:fontFamily="@font/font_regular"
                         android:inputType="number"
                         android:maxLength="3"
@@ -321,7 +316,6 @@
                         android:id="@+id/et_height"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
                         android:fontFamily="@font/font_regular"
                         android:inputType="number"
                         android:maxLength="3"
@@ -334,15 +328,123 @@
 
             </LinearLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_disability"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/disability"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_disability"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textPersonName"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_notes"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/notes"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textPersonName"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_tips"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/tips"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textPersonName"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_treatment"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font_regular"
+                android:hint="@string/treatment"
+                app:boxStrokeColor="@color/colorAccent"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_treatment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/font_regular"
+                    android:inputType="textPersonName"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="40dp">
+                android:layout_marginTop="15dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_save"
+                    android:id="@+id/btn_add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_accent"
@@ -372,6 +474,18 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_vital_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:text="@string/show_treatment_history"
+                android:textAllCaps="false"
+                android:textColor="@color/text" />
 
         </LinearLayout>
 
