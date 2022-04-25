@@ -141,6 +141,13 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
                         list.remove(position);
                         adapter.setList(list);
                         showAlert("", "تم قبول المريض");
+
+                        Constants.sendNotifications(
+                                requireActivity(),
+                                "الدكتور + " + model.getDoctorName(),
+                                "تم الموافقة على الجلسة العلاجية",
+                                model.getParentToken()
+                        );
                     });
         } else {
             Constants.showAlert(requireActivity(), getString(R.string.no_internet), R.color.orange);
@@ -158,6 +165,13 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
                         list.remove(position);
                         adapter.setList(list);
                         showOfflineAlert("", "تم رفض المريض");
+
+                        Constants.sendNotifications(
+                                requireActivity(),
+                                "الدكتور + " + model.getDoctorName(),
+                                "تم رفض الجلسة العلاجية",
+                                model.getParentToken()
+                        );
                     });
         } else {
             Constants.showAlert(requireActivity(), getString(R.string.no_internet), R.color.orange);

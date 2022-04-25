@@ -48,6 +48,7 @@ public class PatientDetailActivity extends BaseActivity {
         binding.tvVitalHistory.setOnClickListener(view -> {
             startActivity(new Intent(this, TreatmentHistoryActivity.class)
                     .putExtra(Constants.TYPE_MODEL, patient)
+                    .putExtra(Constants.TYPE_TITLE, Constants.TYPE_VENDOR)
             );
         });
 

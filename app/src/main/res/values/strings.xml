@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--    <string name="app_name">Talk To Me</string>-->
-    <string name="app_name">تحدث معي</string>
+        <string name="app_name">Talk To Me</string>
+<!--    <string name="app_name">تحدث معي</string>-->
 
     <string name="yes">نعم</string>
     <string name="no">لا</string>
@@ -85,5 +86,8 @@
     <string name="tips">نصائح</string>
     <string name="treatment">العلاج</string>
     <string name="create_data">تاريخ المراجعة</string>
+
+    <string name="request_been_sent">تم ارسال طلب للدكتور مسبقا ، بانتظار الموافقة …</string>
+    <string name="appName">اسم التطبيق</string>
 
 </resources>

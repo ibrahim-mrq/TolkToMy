@@ -18,6 +18,8 @@ import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.User;
 
+import java.util.Objects;
+
 public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding binding;
@@ -60,7 +62,9 @@ public class LoginActivity extends BaseActivity {
             auth.signInWithEmailAndPassword(getText(binding.etEmail), getText(binding.etPassword))
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
+                            Constants.subscribeToTopic(Objects.requireNonNull(auth.getUid()));
                             getUserData(auth.getUid());
+                            Constants.notifyMe(this, "تجربت الاشعار", "كل 30 ثانية تقريبا 🌚");
                         } else {
                             enableElements(true);
                             showErrorAlert(this, "هناك خطا ما", "يرجى التحقق من البيانات");

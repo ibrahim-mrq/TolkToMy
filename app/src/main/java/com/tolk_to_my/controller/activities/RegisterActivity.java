@@ -126,6 +126,7 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             user.setToken(auth.getUid());
+                            Constants.subscribeToTopic(Objects.requireNonNull(auth.getUid()));
                             db.collection("User")
                                     .document(Objects.requireNonNull(auth.getUid()))
                                     .set(user)
@@ -183,6 +184,7 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             user.setToken(auth.getUid());
+                            Constants.subscribeToTopic(Objects.requireNonNull(auth.getUid()));
                             db.collection("User")
                                     .document(Objects.requireNonNull(auth.getUid()))
                                     .set(user)

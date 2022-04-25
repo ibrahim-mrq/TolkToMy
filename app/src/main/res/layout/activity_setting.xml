@@ -40,7 +40,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/font_regular"
-                android:hint="اسم التطبيق"
+                android:hint="@string/appName"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
@@ -53,39 +53,13 @@
                     android:fontFamily="@font/font_regular"
                     android:inputType="text"
                     android:text="@string/app_name"
-                    android:textAlignment="textStart"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
                     tools:ignore="RtlSymmetry" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="نبذة عن التطبيق"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
-                    android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:text="@string/about"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tv_language"
@@ -95,6 +69,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10dp"
                 android:hint="@string/language"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
@@ -162,15 +137,15 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_logout"
+                android:id="@+id/btn_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/shape_accent"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/logout"
+                android:text="@string/about"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold"

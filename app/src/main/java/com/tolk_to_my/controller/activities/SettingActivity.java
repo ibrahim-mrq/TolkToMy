@@ -1,5 +1,6 @@
 package com.tolk_to_my.controller.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.tolk_to_my.R;
@@ -33,8 +34,9 @@ public class SettingActivity extends BaseActivity {
         binding.imgMessage.setOnClickListener(view -> {
             new Utils().openPhoneMessage(this);
         });
-        binding.btnLogout.setOnClickListener(view -> {
-            Constants.logout(this);
+
+        binding.btnAbout.setOnClickListener(view -> {
+            startActivity(new Intent(this, PdfActivity.class));
         });
     }
 

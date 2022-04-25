@@ -25,6 +25,8 @@ public class TreatmentHistoryActivity extends BaseActivity implements SwipeRefre
     TreatmentHistoryAdapter adapter;
     ArrayList<TreatmentHistory> list = new ArrayList<>();
     Patient patient;
+    String type = "";
+    String token = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class TreatmentHistoryActivity extends BaseActivity implements SwipeRefre
 
     private void initView() {
         patient = (Patient) getIntent().getSerializableExtra(Constants.TYPE_MODEL);
+        type = getIntent().getStringExtra(Constants.TYPE_TITLE);
+        token = getIntent().getStringExtra(Constants.TYPE_ID);
 
         binding.appbar.tvTool.setText(getString(R.string.date_treatment_history));
         binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
@@ -47,11 +51,17 @@ public class TreatmentHistoryActivity extends BaseActivity implements SwipeRefre
         binding.include.recyclerView.setAdapter(adapter);
         binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.include.recyclerView.setHasFixedSize(true);
-        loadData();
-
+        switch (type) {
+            case Constants.TYPE_VENDOR:
+                loadDoctorData();
+                break;
+            case Constants.TYPE_CUSTOMER:
+                loadCustomerData();
+                break;
+        }
     }
 
-    private void loadData() {
+    private void loadDoctorData() {
         if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
             binding.include.statefulLayout.showLoading();
             binding.include.swipeToRefresh.setRefreshing(false);
@@ -72,19 +82,56 @@ public class TreatmentHistoryActivity extends BaseActivity implements SwipeRefre
                             adapter.setList(list);
                         } else {
                             binding.include.statefulLayout.showError(
-                                    getString(R.string.empty_data), view -> loadData());
+                                    getString(R.string.empty_data), view -> loadDoctorData());
                         }
                     });
         } else {
             binding.include.statefulLayout.showOffline(getString(R.string.no_internet), view -> {
-                loadData();
+                loadDoctorData();
+            });
+        }
+    }
+
+    private void loadCustomerData() {
+        if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
+            binding.include.statefulLayout.showLoading();
+            binding.include.swipeToRefresh.setRefreshing(false);
+            db.collection("TreatmentHistory")
+                    .whereEqualTo("patientToken", token)
+                    .addSnapshotListener((query, error) -> {
+                        list.clear();
+                        if (query != null) {
+                            for (QueryDocumentSnapshot document : query) {
+                                list.add(document.toObject(TreatmentHistory.class));
+                            }
+                            if (list.isEmpty()) {
+                                binding.include.statefulLayout.showEmpty();
+                            } else {
+                                binding.include.statefulLayout.showContent();
+                            }
+                            adapter.setList(list);
+                        } else {
+                            binding.include.statefulLayout.showError(
+                                    getString(R.string.empty_data), view -> loadCustomerData());
+                        }
+                    });
+        } else {
+            binding.include.statefulLayout.showOffline(getString(R.string.no_internet), view -> {
+                loadCustomerData();
             });
         }
     }
 
     @Override
     public void onRefresh() {
-        loadData();
+        switch (type) {
+            case Constants.TYPE_VENDOR:
+                loadDoctorData();
+                break;
+            case Constants.TYPE_CUSTOMER:
+                loadCustomerData();
+                break;
+        }
     }
 
     @Override

@@ -360,21 +360,19 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tv_waite"
+                android:id="@+id/tv_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="@font/font_regular"
-                android:visibility="gone"
                 android:gravity="center"
-                android:text="تم ارسال طلب للدكتور ، بانتظار الموافقة ..."
+                android:text="@string/show_treatment_history"
                 android:textAllCaps="false"
                 android:textColor="@color/text"
                 android:textSize="14sp"
                 android:textStyle="bold" />
-
 
         </LinearLayout>
 

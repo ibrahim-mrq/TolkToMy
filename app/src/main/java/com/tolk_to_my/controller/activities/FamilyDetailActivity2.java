@@ -1,7 +1,7 @@
 package com.tolk_to_my.controller.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -21,7 +21,7 @@ import com.tolk_to_my.model.User;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class FamilyDetailActivity extends BaseActivity {
+public class FamilyDetailActivity2 extends BaseActivity {
 
     ActivityFamilyDetailBinding binding;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -56,14 +56,11 @@ public class FamilyDetailActivity extends BaseActivity {
         initDropDownLists();
 
         binding.btnSend.setOnClickListener(view -> {
-            sendOrder();
-        });
-
-        binding.tvHistory.setOnClickListener(view -> {
-            startActivity(new Intent(this, TreatmentHistoryActivity.class)
-                    .putExtra(Constants.TYPE_TITLE, Constants.TYPE_CUSTOMER)
-                    .putExtra(Constants.TYPE_ID, model.getToken())
-            );
+            if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
+                loadOrder();
+            } else {
+                Constants.showAlert(this, getString(R.string.no_internet), R.color.orange);
+            }
         });
     }
 
@@ -143,37 +140,49 @@ public class FamilyDetailActivity extends BaseActivity {
     }
 
     private void sendOrder() {
-        if (NetworkHelper.INSTANCE.isNetworkOnline(this)) {
-            Request order = new Request();
-            order.setCommunicationType(getText(binding.etCommunication));
-            order.setDisability(getText(binding.etSelectDisability));
-            order.setDoctorGender(getText(binding.etGenderDoctor));
-            order.setDoctorName(doctorName);
-            order.setDoctorToken(doctorToken);
-            order.setParentToken(model.getParent_token());
-            order.setPatientToken(model.getToken());
-            order.setPatientBirthday(model.getBirthday());
-            order.setPatientName(model.getName());
-            order.setPatientId(model.getId());
-            order.setToken("");
+        Request order = new Request();
+        order.setCommunicationType(getText(binding.etCommunication));
+        order.setDisability(getText(binding.etSelectDisability));
+        order.setDoctorGender(getText(binding.etGenderDoctor));
+        order.setDoctorName(doctorName);
+        order.setDoctorToken(doctorToken);
+        order.setParentToken(model.getParent_token());
+        order.setPatientToken(model.getToken());
+        order.setPatientBirthday(model.getBirthday());
+        order.setPatientName(model.getName());
+        order.setPatientId(model.getId());
+        order.setToken("");
 
+        db.collection("Request")
+                .add(order)
+                .addOnSuccessListener(document -> {
+                    document.update("token", document.getId());
+                    enableElements(true);
+                    showAlert(this, "", "تم ارسال الطلب للدكتور المعالج");
+                });
+    }
+
+    private void loadOrder() {
+        if (isNotEmpty(binding.etDisability, binding.tvDisability)
+                && isNotEmpty(binding.etGenderDoctor, binding.tvGenderDoctor)
+                && isNotEmpty(binding.etDoctor, binding.tvDoctor)
+                && isNotEmpty(binding.etCommunication, binding.tvCommunication)
+        ) {
+            enableElements(false);
             db.collection("Request")
-                    .add(order)
-                    .addOnSuccessListener(document -> {
-                        document.update("token", document.getId());
-                        enableElements(true);
-                        showAlert(this, "", "تم ارسال الطلب للدكتور المعالج");
-
-                        Constants.sendNotifications(
-                                this,
-                                "الاسم المريض : " + model.getName(),
-                                "لديك طلب مراجعة جديد",
-                                doctorToken
-                        );
-
+                    .whereEqualTo("patientToken", model.getToken())
+                    .whereEqualTo("doctorToken", doctorToken)
+                    .whereEqualTo("disability", getText(binding.etSelectDisability))
+                    .addSnapshotListener((value, error) -> {
+                        if (Objects.requireNonNull(value).toObjects(Request.class).isEmpty()) {
+                            sendOrder();
+                        } else {
+                            Constants.showAlert(this, getString(R.string.request_been_sent), R.color.orange);
+                            enableElements(true);
+                            return;
+                        }
+                        Log.e("response", "isEmpty = " + Objects.requireNonNull(value).toObjects(Request.class).isEmpty());
                     });
-        } else {
-            Constants.showAlert(this, getString(R.string.no_internet), R.color.orange);
         }
     }
 
@@ -190,8 +199,8 @@ public class FamilyDetailActivity extends BaseActivity {
         binding.etGenderDoctor.setEnabled(enable);
         binding.etSelectDisability.setEnabled(enable);
         binding.etCommunication.setEnabled(enable);
+        binding.etDoctor.setEnabled(enable);
     }
-
 
     @Override
     public void onBackPressed() {
