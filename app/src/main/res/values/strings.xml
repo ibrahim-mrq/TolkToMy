@@ -89,5 +89,6 @@
 
     <string name="request_been_sent">تم ارسال طلب للدكتور مسبقا ، بانتظار الموافقة …</string>
     <string name="appName">اسم التطبيق</string>
+    <string name="contact_as">تواصل معنا</string>
 
 </resources>

@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".controller.activities.MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:alpha="@dimen/alpha"
+        android:background="@drawable/logo"
+        tools:ignore="ContentDescription" />
+
     <FrameLayout
         android:id="@+id/main_frame"
         android:layout_width="match_parent"

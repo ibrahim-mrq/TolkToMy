@@ -10,6 +10,11 @@
         android:id="@+id/appbar"
         layout="@layout/content_app_bar" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text" />
+
     <include
         android:id="@+id/main"
         layout="@layout/content_main" />

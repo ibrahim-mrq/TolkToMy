@@ -12,14 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:alpha="0.0"
+        android:alpha="@dimen/alpha"
         android:background="@drawable/logo"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <include
@@ -45,6 +44,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/logo"
+                    android:visibility="gone"
                     app:shapeAppearanceOverlay="@style/circleImageView"
                     tools:ignore="ContentDescription" />
 

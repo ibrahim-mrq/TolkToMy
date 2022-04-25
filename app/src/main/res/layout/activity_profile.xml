@@ -1,296 +1,310 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical"
     android:theme="@style/MaterialTheme"
     tools:context=".controller.activities.ProfileActivity">
 
-    <include
-        android:id="@+id/appbar"
-        layout="@layout/content_app_bar_back" />
 
-    <androidx.core.widget.NestedScrollView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:alpha="@dimen/alpha"
+        android:background="@drawable/logo"
+        tools:ignore="ContentDescription" />
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/content_app_bar_back" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="60dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/logo"
-                app:shapeAppearanceOverlay="@style/circleImageView"
-                tools:ignore="ContentDescription" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/name"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_name"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="60dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo"
+                    app:shapeAppearanceOverlay="@style/circleImageView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="50dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="textPersonName"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/name"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="textPersonName"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_specialize"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/specialize"
-                android:visibility="gone"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_specialize"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_specialize"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/specialize"
+                    android:visibility="gone"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_specialize"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_gender"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/gender"
-                android:visibility="gone"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_gender"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_gender"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/gender"
+                    android:visibility="gone"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_id"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/id"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_id"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_id"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="textEmailAddress"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/id"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="textEmailAddress"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_phone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/phone"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_phone"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_phone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/phone"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_birth"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/birth"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_birth"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_birth"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/birth"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/email"
-                app:boxStrokeColor="@color/colorAccent"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_email"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/email"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/password"
-                app:boxStrokeColor="@color/colorAccent"
-                app:endIconMode="password_toggle"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/colorAccent">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="textPassword"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/password"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:endIconMode="password_toggle"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="textPassword"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tv_type"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
-                android:fontFamily="@font/font_regular"
-                android:hint="@string/type"
-                app:boxStrokeColor="@color/textSecondary"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/textSecondary">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_type"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_type"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="40dp"
                     android:fontFamily="@font/font_regular"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/textSecondary"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:hint="@string/type"
+                    app:boxStrokeColor="@color/textSecondary"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/textSecondary">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:fontFamily="@font/font_regular"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/textSecondary"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
-        </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
-</LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

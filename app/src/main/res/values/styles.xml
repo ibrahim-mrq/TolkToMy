@@ -8,6 +8,7 @@
         <item name="colorControlHighlight">@color/textSecondary</item>
         <item name="android:screenOrientation">portrait</item>
         <item name="android:layoutDirection">rtl</item>
+<!--        <item name="android:windowBackground">@drawable/logo_background</item>-->
     </style>
 
     <!--  TODO : MaterialTheme  -->
@@ -23,8 +24,8 @@
 
     <!--  TODO : appbar  -->
     <style name="appBarStyleBoldText" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-<!--        <item name="android:fontFamily">@font/font_bold</item>-->
-<!--        <item name="android:direction">right_to_left</item>-->
+        <!--        <item name="android:fontFamily">@font/font_bold</item>-->
+        <!--        <item name="android:direction">right_to_left</item>-->
     </style>
 
     <!--  TODO : bottom Bar  -->
