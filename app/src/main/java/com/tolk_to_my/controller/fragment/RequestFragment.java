@@ -147,7 +147,7 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
 
                         Constants.sendNotifications(
                                 requireActivity(),
-                                "الدكتور + " + model.getDoctorName(),
+                                "الدكتور : " + model.getDoctorName(),
                                 "تم الموافقة على الجلسة العلاجية",
                                 model.getParentToken()
                         );
@@ -169,7 +169,7 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
                         MainActivity.updateRequestBadge();
                         Constants.sendNotifications(
                                 requireActivity(),
-                                "الدكتور + " + model.getDoctorName(),
+                                "الدكتور : " + model.getDoctorName(),
                                 "تم رفض الجلسة العلاجية",
                                 model.getParentToken()
                         );
