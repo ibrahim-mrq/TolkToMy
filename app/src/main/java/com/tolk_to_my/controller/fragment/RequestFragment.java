@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
+import com.tolk_to_my.controller.activities.MainActivity;
 import com.tolk_to_my.controller.adapter.RequestAdapter;
 import com.tolk_to_my.controller.interfaces.RequestInterface;
 import com.tolk_to_my.databinding.FragmentRequestBinding;
@@ -72,14 +73,15 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
             }
 
             @Override
-            public void delete(Request model, int position) {
-                deleteOrder(model, position);
+            public void delete(Request model) {
+                deleteOrder(model);
             }
         });
         binding.include.recyclerView.setAdapter(adapter);
         binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.include.recyclerView.setHasFixedSize(true);
         loadData();
+        MainActivity.updateRequestBadge();
 
     }
 
@@ -141,6 +143,7 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
                         list.remove(position);
                         adapter.setList(list);
                         showAlert("", "تم قبول المريض");
+                        MainActivity.updateRequestBadge();
 
                         Constants.sendNotifications(
                                 requireActivity(),
@@ -154,7 +157,7 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
         }
     }
 
-    private void deleteOrder(Request model, int position) {
+    private void deleteOrder(Request model) {
         if (NetworkHelper.INSTANCE.isNetworkOnline(requireActivity())) {
             showCustomProgress(false);
             db.collection("Request")
@@ -162,10 +165,8 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
                     .delete()
                     .addOnSuccessListener(unused -> {
                         dismissCustomProgress();
-                        list.remove(position);
-                        adapter.setList(list);
                         showOfflineAlert("", "تم رفض المريض");
-
+                        MainActivity.updateRequestBadge();
                         Constants.sendNotifications(
                                 requireActivity(),
                                 "الدكتور + " + model.getDoctorName(),
@@ -177,7 +178,6 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
             Constants.showAlert(requireActivity(), getString(R.string.no_internet), R.color.orange);
         }
     }
-
 
     @Override
     public void onRefresh() {

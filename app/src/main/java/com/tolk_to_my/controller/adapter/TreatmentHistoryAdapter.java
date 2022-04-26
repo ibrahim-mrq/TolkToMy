@@ -76,6 +76,10 @@ public class TreatmentHistoryAdapter extends RecyclerView.Adapter<TreatmentHisto
 
             binding.date.setText(Constants.setText(mContext, R.string.create_data, model.getCreateData()));
 
+            binding.notes.setText(Constants.setText(mContext, R.string.notes, model.getNotes()));
+            binding.tips.setText(Constants.setText(mContext, R.string.tips, model.getTips()));
+            binding.treatment.setText(Constants.setText(mContext, R.string.treatment, model.getTreatment()));
+
         }
     }
 

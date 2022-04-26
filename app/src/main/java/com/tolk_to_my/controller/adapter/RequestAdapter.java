@@ -35,10 +35,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestO
         notifyDataSetChanged();
     }
 
-    public RequestInterface getRequestInterface() {
-        return requestInterface;
-    }
-
     public void setRequestInterface(RequestInterface requestInterface) {
         this.requestInterface = requestInterface;
     }
@@ -60,7 +56,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestO
         });
 
         holder.binding.btnNo.setOnClickListener(view -> {
-            requestInterface.delete(model, position);
+            requestInterface.delete(model);
         });
     }
 

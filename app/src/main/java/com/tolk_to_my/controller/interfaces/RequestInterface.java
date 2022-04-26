@@ -6,5 +6,5 @@ public interface RequestInterface {
 
     void accept(Request model, int position);
 
-    void delete(Request model, int position);
+    void delete(Request model);
 }

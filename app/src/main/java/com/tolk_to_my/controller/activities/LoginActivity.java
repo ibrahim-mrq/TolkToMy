@@ -3,6 +3,7 @@ package com.tolk_to_my.controller.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.content.ContextCompat;
@@ -62,9 +63,8 @@ public class LoginActivity extends BaseActivity {
             auth.signInWithEmailAndPassword(getText(binding.etEmail), getText(binding.etPassword))
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Constants.subscribeToTopic(Objects.requireNonNull(auth.getUid()));
                             getUserData(auth.getUid());
-                            Constants.notifyMe(this, "تجربت الاشعار", "كل 30 ثانية تقريبا 🌚");
+                            Constants.notifyMe(this, "تذكير المراجعة الشاملة", "يجب عمل مراجعة شاملة للمريض");
                         } else {
                             enableElements(true);
                             showErrorAlert(this, "هناك خطا ما", "يرجى التحقق من البيانات");
@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity {
                         showAlert(this, "", "تم تسجيل الدحول بنجاح");
                         Hawk.put(Constants.IS_LOGIN, true);
                         Hawk.put(Constants.USER, user);
-                        Hawk.put(Constants.USER_TOKEN, user.getToken());
+                        Hawk.put(Constants.USER_TOKEN, auth.getUid());
                         new Handler().postDelayed(() -> {
                             enableElements(true);
                             if (user.getType().equals(Constants.TYPE_CUSTOMER)) {
@@ -95,6 +95,7 @@ public class LoginActivity extends BaseActivity {
                                 Hawk.put(Constants.USER_TYPE, Constants.TYPE_VENDOR);
                                 startActivity(new Intent(this, MainActivity.class));
                             }
+                            Constants.subscribeToTopic(Hawk.get(Constants.USER_TOKEN, ""));
                             finish();
                         }, 2000);
                     }

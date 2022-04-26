@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
+import com.tolk_to_my.controller.activities.MainActivity;
 import com.tolk_to_my.controller.adapter.PatientAdapter;
 import com.tolk_to_my.databinding.FragmentPatientBinding;
 import com.tolk_to_my.helpers.BaseFragment;
@@ -67,6 +68,7 @@ public class PatientFragment extends BaseFragment implements SwipeRefreshLayout.
         binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.include.recyclerView.setHasFixedSize(true);
         loadData();
+        MainActivity.updatePatientBadge();
 
     }
 
@@ -88,6 +90,7 @@ public class PatientFragment extends BaseFragment implements SwipeRefreshLayout.
                                 binding.include.statefulLayout.showContent();
                             }
                             adapter.setList(list);
+                            MainActivity.updatePatientBadge();
                         } else {
                             binding.include.statefulLayout.showError(
                                     getString(R.string.empty_data), view -> loadData());

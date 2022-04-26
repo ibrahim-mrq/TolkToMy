@@ -1,6 +1,7 @@
 package com.tolk_to_my.controller.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,16 +13,28 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
 import com.tolk_to_my.controller.fragment.PatientFragment;
 import com.tolk_to_my.controller.fragment.RequestFragment;
 import com.tolk_to_my.databinding.ActivityMainBinding;
 import com.tolk_to_my.helpers.BaseActivity;
 import com.tolk_to_my.helpers.Constants;
+import com.tolk_to_my.helpers.NetworkHelper;
+import com.tolk_to_my.model.Patient;
+import com.tolk_to_my.model.Request;
 
+import java.util.ArrayList;
+
+@SuppressLint("StaticFieldLeak")
 public class MainActivity extends BaseActivity {
 
-    ActivityMainBinding binding;
+    public static ActivityMainBinding binding;
+    public static Context context;
+    public static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +45,12 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+        context = MainActivity.this;
         setSupportActionBar(binding.appbar.toolbar);
         binding.appbar.tvTool.setText(getString(R.string.app_name));
         bottomNavigation();
+        updateRequestBadge();
+        updatePatientBadge();
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -62,6 +78,64 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.main_frame, fragment);
         transaction.commit();
+    }
+
+    public static void updateRequestBadge() {
+        BadgeDrawable requestBadge = binding.main.bottomNavigation.getOrCreateBadge(R.id.review_request);
+        ArrayList<Request> list = new ArrayList<>();
+        if (NetworkHelper.INSTANCE.isNetworkOnline(context)) {
+            db.collection("Request")
+                    .whereEqualTo("doctorToken", Hawk.get(Constants.USER_TOKEN))
+                    .addSnapshotListener((query, error) -> {
+                        list.clear();
+                        if (query != null) {
+                            requestBadge.setVisible(true);
+                            for (QueryDocumentSnapshot document : query) {
+                                list.add(document.toObject(Request.class));
+                            }
+                            if (list.isEmpty()) {
+                                requestBadge.setNumber(0);
+                            } else {
+                                requestBadge.setNumber(list.size());
+                            }
+                        } else {
+                            requestBadge.setVisible(false);
+                            requestBadge.setNumber(0);
+                        }
+                    });
+        } else {
+            requestBadge.setVisible(false);
+            requestBadge.setNumber(0);
+        }
+    }
+
+    public static void updatePatientBadge() {
+        BadgeDrawable reviewsBadge = binding.main.bottomNavigation.getOrCreateBadge(R.id.reviews);
+        ArrayList<Patient> list = new ArrayList<>();
+        if (NetworkHelper.INSTANCE.isNetworkOnline(context)) {
+            db.collection("Patient")
+                    .whereEqualTo("doctorToken", Hawk.get(Constants.USER_TOKEN))
+                    .addSnapshotListener((query, error) -> {
+                        list.clear();
+                        if (query != null) {
+                            reviewsBadge.setVisible(true);
+                            for (QueryDocumentSnapshot document : query) {
+                                list.add(document.toObject(Patient.class));
+                            }
+                            if (list.isEmpty()) {
+                                reviewsBadge.setNumber(0);
+                            } else {
+                                reviewsBadge.setNumber(list.size());
+                            }
+                        } else {
+                            reviewsBadge.setVisible(false);
+                            reviewsBadge.setNumber(0);
+                        }
+                    });
+        } else {
+            reviewsBadge.setVisible(false);
+            reviewsBadge.setNumber(0);
+        }
     }
 
     @Override

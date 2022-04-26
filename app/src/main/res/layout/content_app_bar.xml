@@ -23,7 +23,6 @@
                 android:layout_centerInParent="true"
                 android:background="@color/colorPrimary"
                 app:title=" "
-                android:theme="@style/appBarStyleBoldText"
                 app:titleTextColor="@color/text" />
 <!--            android:theme="@style/appBarStyleBoldText"-->
 

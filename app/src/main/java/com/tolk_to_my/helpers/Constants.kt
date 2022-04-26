@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.allyants.notifyme.NotifyMe
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
 import com.orhanobut.hawk.Hawk
@@ -59,8 +60,8 @@ object Constants {
             try {
                 val localDate = LocalDateTime.now()
                 val dtFormatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd hh:mm:ss")
-//                val dateString = dtFormatter.format(localDate.plusMonths(6))
-                val dateString = dtFormatter.format(localDate)
+                val dateString = dtFormatter.format(localDate.plusMonths(6))
+//                val dateString = dtFormatter.format(localDate)
                 val format: DateFormat = SimpleDateFormat("yyyy-MMM-dd hh:mm:ss", Locale.ENGLISH)
                 val date = format.parse(dateString)
                 NotifyMe.Builder(context)
@@ -73,10 +74,10 @@ object Constants {
                         true,
                         false
                     )
-//                    .rrule("FREQ=MONTHLY;INTERVAL=5;COUNT=1")
+                    .rrule("FREQ=MONTHLY;INTERVAL=1;COUNT=1")
 //                    .rrule("FREQ=DAILY;INTERVAL=5;COUNT=1")
 //                    .rrule("FREQ=MINUTELY;INTERVAL=1;COUNT=50")
-                    .rrule("FREQ=SECONDLY;INTERVAL=10;COUNT=50")
+//                    .rrule("FREQ=SECONDLY;INTERVAL=10;COUNT=50")
                     .build()
             } catch (e: ParseException) {
                 e.printStackTrace()
@@ -86,8 +87,8 @@ object Constants {
 
     @JvmStatic
     fun logout(context: Context) {
+        unsubscribeFromTopic()
         Hawk.deleteAll()
-        unsubscribeFromTopic(Hawk.get(USER_TOKEN, ""))
         FirebaseAuth.getInstance().signOut()
         Toast.makeText(context, "تم تسجيل الخروج بنجاح", Toast.LENGTH_SHORT).show()
         context.startActivity(Intent(context, SplashActivity::class.java))
@@ -139,7 +140,16 @@ object Constants {
     }
 
     @JvmStatic
-    fun unsubscribeFromTopic(topic: String) {
-        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic)
+    fun unsubscribeFromTopic() {
+        Log.e("response", "USER_TOKEN2 = " + Hawk.get(USER_TOKEN, ""))
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(Hawk.get(USER_TOKEN, ""))
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.e("response", "result = " + task.result.toString())
+                } else {
+                    Log.e("response", "result = error")
+                }
+            }
+
     }
 }

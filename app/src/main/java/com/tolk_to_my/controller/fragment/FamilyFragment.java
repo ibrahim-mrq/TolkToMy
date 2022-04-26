@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.orhanobut.hawk.Hawk;
 import com.tolk_to_my.R;
 import com.tolk_to_my.controller.activities.AddFamilyActivity;
+import com.tolk_to_my.controller.activities.FamilyActivity;
 import com.tolk_to_my.controller.adapter.FamilyMemberAdapter;
 import com.tolk_to_my.databinding.FragmentFamilyBinding;
 import com.tolk_to_my.helpers.BaseFragment;
@@ -27,7 +28,6 @@ import com.tolk_to_my.model.FamilyMember;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class FamilyFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -70,6 +70,7 @@ public class FamilyFragment extends BaseFragment implements SwipeRefreshLayout.O
         binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.include.recyclerView.setHasFixedSize(true);
         loadData();
+        FamilyActivity.updateFamilyBadge();
         binding.fab.setOnClickListener(view -> {
             startActivity(new Intent(getActivity(), AddFamilyActivity.class));
         });

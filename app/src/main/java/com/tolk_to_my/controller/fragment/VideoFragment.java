@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.tolk_to_my.R;
+import com.tolk_to_my.controller.activities.FamilyActivity;
 import com.tolk_to_my.controller.adapter.VideoAdapter;
 import com.tolk_to_my.databinding.FragmentVideoBinding;
 import com.tolk_to_my.helpers.BaseFragment;
-import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.Video;
 
@@ -65,6 +65,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
         binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.include.recyclerView.setHasFixedSize(true);
         loadData();
+        FamilyActivity.updateVideoBadge();
     }
 
     private void loadData() {
