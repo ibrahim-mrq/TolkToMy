@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,14 @@ import com.tolk_to_my.controller.activities.MainActivity;
 import com.tolk_to_my.controller.adapter.RequestAdapter;
 import com.tolk_to_my.controller.interfaces.RequestInterface;
 import com.tolk_to_my.databinding.FragmentRequestBinding;
+import com.tolk_to_my.firebase.ApiRequest;
+import com.tolk_to_my.firebase.Results;
 import com.tolk_to_my.helpers.BaseFragment;
 import com.tolk_to_my.helpers.Constants;
 import com.tolk_to_my.helpers.NetworkHelper;
 import com.tolk_to_my.model.Patient;
 import com.tolk_to_my.model.Request;
+import com.tolk_to_my.model.User;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -59,6 +63,50 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        new ApiRequest<User>().getData(
+                requireActivity(),
+                "User",
+                User.class,
+                new Results<ArrayList<User>>() {
+                    @Override
+                    public void onSuccess(ArrayList<User> users) {
+                        Log.e("response", "users = " + users);
+                    }
+
+                    @Override
+                    public void onFailureInternet(@NotNull String message) {
+
+                    }
+
+                    @Override
+                    public void onEmpty() {
+
+                    }
+                }
+        );
+        Log.e("response", "========================================= \n\n\n\n\n\n\n\n");
+
+        new ApiRequest<Request>().getData(
+                requireActivity(),
+                "Request",
+                Request.class,
+                new Results<ArrayList<Request>>() {
+                    @Override
+                    public void onSuccess(ArrayList<Request> requests) {
+                        Log.e("response", "requests = " + requests);
+                    }
+
+                    @Override
+                    public void onFailureInternet(@NotNull String message) {
+
+                    }
+
+                    @Override
+                    public void onEmpty() {
+
+                    }
+                }
+        );
     }
 
     private void initView() {
