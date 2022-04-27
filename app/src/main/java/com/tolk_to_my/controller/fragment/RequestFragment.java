@@ -98,15 +98,17 @@ public class RequestFragment extends BaseFragment implements SwipeRefreshLayout.
 
                     @Override
                     public void onFailureInternet(@NotNull String message) {
-
+                        Log.e("response", "requests = " + message);
                     }
 
                     @Override
                     public void onEmpty() {
-
+                        Log.e("response", "onEmpty = ");
                     }
                 }
         );
+
+        new ApiRequest<FamilyFragment>();
     }
 
     private void initView() {

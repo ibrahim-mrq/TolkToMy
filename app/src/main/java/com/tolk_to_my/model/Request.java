@@ -24,7 +24,7 @@ public class Request implements Serializable {
     @NotNull
     @Override
     public String toString() {
-        return "Order{" +
+        return "Request{" +
                 "patientName='" + patientName + '\'' +
                 ", patientBirthday='" + patientBirthday + '\'' +
                 ", patientId='" + patientId + '\'' +
